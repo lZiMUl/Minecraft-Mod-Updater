@@ -1,6 +1,6 @@
 {
   "name": "minecraft-mods-updater",
-  "description": "A Minecraft mod update tool based on Node.JS",
+  "description": "A Minecraft mod update tool based on Node.js",
   "version": "1.0.0",
   "author": {
     "name": "lZiMUl",
