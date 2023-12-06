@@ -1,0 +1,61 @@
+{
+  "name": "minecraft-mods-updater",
+  "description": "A Minecraft mod update tool based on Node.JS",
+  "version": "1.0.0",
+  "author": {
+    "name": "lZiMUl",
+    "email": "AA2908554069@gmail.com",
+    "url": "https://b23.tv/vUMYbj"
+  },
+  "contributors": [
+    {
+      "name": "lZiMUl",
+      "email": "AA2908554069@gmail.com",
+      "url": "https://b23.tv/vUMYbj"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "lZiMUl",
+      "email": "AA2908554069@gmail.com",
+      "url": "https://b23.tv/vUMYbj"
+    }
+  ],
+  "homepage": "https://lzimul.top",
+  "main": "./build/index.js",
+  "types": "./lib/*",
+  "typings": "./lib/*",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "node .",
+    "build": "tsc",
+    "dev": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lZiMUl",
+    "Minecraft",
+    "Mods",
+    "Updater"
+  ],
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chalk": "^4.0.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lZiMUl/Minecraft-Mod-Updater.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lZiMUl/Minecraft-Mod-Updater/issues/",
+    "email": "AA2908554069@gmail.com"
+  },
+  "sideEffects": false,
+  "private": false,
+  "preferGlobal": true,
+  "deprecated": false
+}
