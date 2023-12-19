@@ -1,6 +1,2 @@
-/.git
-/.idea
-/build
-/node_modules
-/.gitignore
+/node_modules/
 /tsconfig.tsbuildinfo

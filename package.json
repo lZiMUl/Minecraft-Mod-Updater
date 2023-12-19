@@ -1,7 +1,7 @@
 {
   "name": "minecraft-mods-updater",
   "description": "A Minecraft mod update tool based on Node.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "lZiMUl",
     "email": "AA2908554069@gmail.com",
@@ -31,6 +31,10 @@
     "build": "tsc",
     "dev": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "minecraft-mods-updater": "./build/index.js",
+    "mcmu": "./build/index.js"
   },
   "keywords": [
     "lZiMUl",
