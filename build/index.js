@@ -10,7 +10,7 @@ const commander_1 = require("commander");
 const chalk_1 = require("chalk");
 const index_1 = tslib_1.__importDefault(require("./core/index"));
 const command = new commander_1.Command('mcmu');
-const program = command.description('Minecraft Mod Updater').version('1.1.7');
+const program = command.description('Minecraft Mod Updater').version('1.1.8');
 program.option('-fp, --filePath <path>', 'path to the mod file', (0, node_path_1.join)((0, node_path_1.resolve)('.'), './manifest.json'));
 program.option('-od, --outDir <path>', 'module output position', (0, node_path_1.resolve)('.'));
 program.option('-ak, --apiKey <text>', 'api key', node_process_1.env.MCMU_APIKEY ?? 'none');

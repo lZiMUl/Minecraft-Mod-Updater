@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="My new Project">
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/core/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/core/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/interfaces/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/interfaces/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +196,8 @@
       <workItem from="1703471614509" duration="185000" />
       <workItem from="1703471831458" duration="248000" />
       <workItem from="1703476596530" duration="4450000" />
-      <workItem from="1703481100253" duration="416000" />
+      <workItem from="1703481100253" duration="1043000" />
+      <workItem from="1703482233887" duration="108000" />
     </task>
     <task id="LOCAL-00001" summary="My new Project">
       <option name="closed" value="true" />
@@ -258,7 +247,31 @@
       <option name="project" value="LOCAL" />
       <updated>1702962727320</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update Project">
+      <option name="closed" value="true" />
+      <created>1703481820212</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1703481820212</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update Project">
+      <option name="closed" value="true" />
+      <created>1703481915451</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703481915451</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update Project">
+      <option name="closed" value="true" />
+      <created>1703481938462</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703481938462</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +283,7 @@
       <path value="$PROJECT_DIR$/" />
     </ignored-roots>
     <MESSAGE value="My new Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="My new Project" />
+    <MESSAGE value="Update Project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Project" />
   </component>
 </project>

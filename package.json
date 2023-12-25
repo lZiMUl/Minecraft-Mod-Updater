@@ -53,10 +53,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lZiMUl/Minecraft-Mod-Updater.git"
+    "url": "git+https://github.com/lZiMUl/Minecraft-Mods-Updater.git"
   },
   "bugs": {
-    "url": "https://github.com/lZiMUl/Minecraft-Mod-Updater/issues/",
+    "url": "https://github.com/lZiMUl/Minecraft-Mods-Updater/issues/",
     "email": "AA2908554069@gmail.com"
   },
   "sideEffects": false,
