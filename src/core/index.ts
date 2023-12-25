@@ -1,4 +1,4 @@
-import {join, resolve} from 'node:path';
+import {join} from 'node:path';
 import {EventEmitter} from 'node:events';
 import {createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync, WriteStream} from 'node:fs';
 import {AxiosInstance, AxiosResponse, create, request} from 'axios';
@@ -27,9 +27,10 @@ class UpdateMods {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'x-api-key': config.api
+                'x-api-key': config.apiKey
             }
         });
+
         this.modInfo = JSON.parse(readFileSync(filePath, {
             encoding: 'utf-8'
         }));
@@ -58,7 +59,7 @@ class UpdateMods {
                     if (mods.id !== fileID || config.forceDownload) {
                         if (mods.downloadUrl) {
                             this.event.emit('download', mods);
-                            await this.downloadFile(mods, join(config.outDir || resolve('.'), 'MinecraftModsUpdate'), config);
+                            await this.downloadFile(mods, join(config.outDir, 'MinecraftModsUpdate'), config);
                         } else {
                             this.event.emit('error', mods);
                             this.writeManifest(mods, false);
@@ -74,7 +75,7 @@ class UpdateMods {
                     this.event.emit('done', this.filesData);
                     exit(0);
                 }
-            }, 2000);
+            }, 5000);
         }
     }
 

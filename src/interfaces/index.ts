@@ -1,7 +1,11 @@
 interface Config {
-    api: string;
-    forceDownload?: boolean;
-    outDir?: string;
+    outDir: string;
+    apiKey: string;
+    forceDownload: boolean;
+}
+
+interface Parameter extends Config {
+    filePath: string;
 }
 
 interface ModFormat {
@@ -30,4 +34,4 @@ interface FilesInfo {
 type Event = 'download' | 'downloaded' | 'skipped' | 'done' | 'error';
 type Callback<T> = (mods: T) => void;
 
-export type {Config, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback};
+export type {Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback};
