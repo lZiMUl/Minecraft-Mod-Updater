@@ -10,7 +10,7 @@ import ModUpdate, {FilesInfo, ModInfo} from "./core/index";
 import {Parameter} from "./interfaces";
 
 const command: Command = new Command('mcmu');
-const program: Command = command.description('Minecraft Mod Updater').version('1.1.7');
+const program: Command = command.description('Minecraft Mod Updater').version('1.1.8');
 
 program.option('-fp, --filePath <path>', 'path to the mod file', join(resolve('.'), './manifest.json'));
 program.option('-od, --outDir <path>', 'module output position', resolve('.'));
