@@ -10,7 +10,7 @@ npm install -g minecraft-mods-updater
 ## Example
 ```bash
 mcmu --help
-mcmu -fp "./MyModPack/manifest.json"
+mcmu -fp "./MyModPack/manifest.json" -od "./MyModPack" -ak "xxxxxxxxxxxxxxxxxxxxxx" -fd
 ```
 
 ## Parameter
