@@ -34,4 +34,4 @@ interface FilesInfo {
 type Event = 'download' | 'downloaded' | 'skipped' | 'done' | 'error';
 type Callback<T> = (mods: T) => void;
 
-export type {Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback};
+export type {Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback}

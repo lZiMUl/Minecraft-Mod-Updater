@@ -10,7 +10,7 @@ import ModUpdate, {FilesInfo, ModInfo} from "./core/index";
 import {Parameter} from "./interfaces";
 
 const command: Command = new Command('mcmu');
-const program: Command = command.description('Minecraft Mod Updater').version('1.1.8');
+const program: Command = command.description('Minecraft Mod Updater').version('1.2.8');
 
 program.option('-fp, --filePath <path>', 'path to the mod file', join(resolve('.'), './manifest.json'));
 program.option('-od, --outDir <path>', 'module output position', resolve('.'));
@@ -28,7 +28,6 @@ if (apiKey !== 'none') {
             apiKey,
             forceDownload
         });
-
         modUpdate.addListener<ModInfo>('download', (mods: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mods.fileName)} {(${yellowBright(mods.modId)}) [${redBright(mods.fileID)} => ${greenBright(mods.id)}]} -> ${blueBright(mods.downloadUrl)}`));
         modUpdate.addListener<ModInfo>('downloaded', (mods: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mods.fileName)}\n`));
         modUpdate.addListener<ModInfo>('skipped', (mods: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mods.fileName)} (${yellowBright(mods.modId)} [${greenBright(mods.fileID)} == ${greenBright(mods.id)}]) \n`));
@@ -40,5 +39,3 @@ if (apiKey !== 'none') {
 } else {
     warn(yellowBright('The MCMU_APIKEY system environment variable could not be found, please add the system environment variable and try again alive to view the help with mcmu -h'));
 }
-
-

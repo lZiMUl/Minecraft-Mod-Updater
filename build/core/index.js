@@ -35,13 +35,14 @@ class UpdateMods {
                 projectID, fileID, required
             })))];
         this.update(config);
+        this.event.emit('getNextModInfo', this.mods.shift());
     }
     addListener(event, callback) {
         this.event.addListener(event, callback);
     }
-    update(config, { projectID, fileID, required } = this.mods.shift()) {
-        if (required) {
-            setTimeout(async () => {
+    update(config) {
+        this.event.addListener('getNextModInfo', async ({ projectID, fileID, required }) => {
+            if (required) {
                 if (this.mods.length && projectID && fileID) {
                     const { data } = await this.instance.request({
                         url: `${projectID}/files`,
@@ -50,18 +51,18 @@ class UpdateMods {
                     if (mods.id !== fileID || config.forceDownload) {
                         if (mods.downloadUrl) {
                             this.event.emit('download', mods);
-                            await this.downloadFile(mods, (0, node_path_1.join)(config.outDir, 'MinecraftModsUpdate'), config);
+                            await this.downloadFile(mods, (0, node_path_1.join)(config.outDir, 'MinecraftModsUpdate'));
                         }
                         else {
                             this.event.emit('error', mods);
                             this.writeManifest(mods, false);
-                            this.update(config);
+                            this.event.emit('getNextModInfo', this.mods.shift());
                         }
                     }
                     else {
                         this.event.emit('skipped', mods);
                         this.writeManifest(mods, true);
-                        this.update(config);
+                        this.event.emit('getNextModInfo', this.mods.shift());
                     }
                 }
                 else {
@@ -69,10 +70,10 @@ class UpdateMods {
                     this.event.emit('done', this.filesData);
                     (0, node_process_1.exit)(0);
                 }
-            }, 5000);
-        }
+            }
+        });
     }
-    async downloadFile(mods, path, config) {
+    async downloadFile(mods, path) {
         const { data } = await (0, axios_1.request)({
             url: mods.downloadUrl,
             responseType: 'stream'
@@ -80,7 +81,7 @@ class UpdateMods {
         data.pipe(this.createFile(mods.fileName, path));
         this.writeManifest(mods, true);
         this.event.emit('downloaded', mods);
-        this.update(config);
+        this.event.emit('getNextModInfo', this.mods.shift());
     }
     createFile(fileName, path) {
         if (!(0, node_fs_1.existsSync)(path))
@@ -96,7 +97,7 @@ class UpdateMods {
         if (status)
             this.filesData.succeed.push(modsInfo);
         else
-            this.filesData.fail.push(modsInfo);
+            modsInfo.projectID && modsInfo.fileID ? this.filesData.fail.push(modsInfo) : void 0;
     }
 }
 exports.default = UpdateMods;

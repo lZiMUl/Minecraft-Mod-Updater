@@ -38,19 +38,20 @@ class UpdateMods {
             projectID, fileID, required
         })))];
         this.update(config);
+        this.event.emit('getNextModInfo', this.mods.shift());
     }
 
     public addListener<T>(event: Event, callback: Callback<T>): void {
         this.event.addListener(event, callback)
     }
 
-    private update(config: Config, {
-        projectID,
-        fileID,
-        required
-    }: ModFormat = this.mods.shift() as ModFormat): void {
-        if (required) {
-            setTimeout(async (): Promise<void> => {
+    private update(config: Config): void {
+        this.event.addListener('getNextModInfo', async ({
+                                                            projectID,
+                                                            fileID,
+                                                            required
+                                                        }: ModFormat): Promise<void> => {
+            if (required) {
                 if (this.mods.length && projectID && fileID) {
                     const {data}: AxiosResponse<FilesFormat> = await this.instance.request({
                         url: `${projectID}/files`,
@@ -59,27 +60,27 @@ class UpdateMods {
                     if (mods.id !== fileID || config.forceDownload) {
                         if (mods.downloadUrl) {
                             this.event.emit('download', mods);
-                            await this.downloadFile(mods, join(config.outDir, 'MinecraftModsUpdate'), config);
+                            await this.downloadFile(mods, join(config.outDir, 'MinecraftModsUpdate'));
                         } else {
                             this.event.emit('error', mods);
                             this.writeManifest(mods, false);
-                            this.update(config);
+                            this.event.emit('getNextModInfo', this.mods.shift());
                         }
                     } else {
                         this.event.emit('skipped', mods);
                         this.writeManifest(mods, true);
-                        this.update(config);
+                        this.event.emit('getNextModInfo', this.mods.shift());
                     }
                 } else {
                     writeFileSync('MinecraftModsUpdate.json', JSON.stringify(this.filesData, null, 2))
                     this.event.emit('done', this.filesData);
                     exit(0);
                 }
-            }, 5000);
-        }
+            }
+        });
     }
 
-    private async downloadFile(mods: ModInfo, path: string, config: Config): Promise<void> {
+    private async downloadFile(mods: ModInfo, path: string): Promise<void> {
         const {data}: AxiosResponse<WriteStream> = await request({
             url: mods.downloadUrl,
             responseType: 'stream'
@@ -87,7 +88,7 @@ class UpdateMods {
         data.pipe(this.createFile(mods.fileName, path));
         this.writeManifest(mods, true);
         this.event.emit('downloaded', mods);
-        this.update(config);
+        this.event.emit('getNextModInfo', this.mods.shift());
     }
 
     private createFile(fileName: string, path: string): WriteStream {
@@ -102,9 +103,9 @@ class UpdateMods {
             required: true
         };
         if (status) this.filesData.succeed.push(modsInfo);
-        else this.filesData.fail.push(modsInfo)
+        else modsInfo.projectID && modsInfo.fileID ? this.filesData.fail.push(modsInfo) : void 0;
     }
 }
 
 export default UpdateMods;
-export type {FilesFormat, ModFormat, ModInfo, FilesInfo, Event, Callback};
+export type {FilesFormat, ModFormat, ModInfo, FilesInfo, Event, Callback}
