@@ -31,7 +31,8 @@ interface FilesInfo {
     fail: ModFormat[];
 }
 
-type Event = 'download' | 'downloaded' | 'skipped' | 'done' | 'error';
-type Callback<T> = (mods: T) => void;
+type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
+// eslint-disable-next-line no-unused-vars
+type Callback<T> = (data: T) => void;
 
-export type {Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback}
+export type { Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback };

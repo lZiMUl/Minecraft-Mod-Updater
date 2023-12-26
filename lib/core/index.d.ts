@@ -1,5 +1,5 @@
-import { Callback, Config, Event, FilesFormat, FilesInfo, ModFormat, ModInfo } from '../interfaces';
-declare class UpdateMods {
+import { type Callback, type Config, type Event, type FilesFormat, type FilesInfo, type ModFormat, type ModInfo } from '../interfaces';
+declare class ModsUpdater {
     private readonly event;
     private readonly modInfo;
     private readonly mods;
@@ -12,6 +12,6 @@ declare class UpdateMods {
     private createFile;
     private writeManifest;
 }
-export default UpdateMods;
+export default ModsUpdater;
 export type { FilesFormat, ModFormat, ModInfo, FilesInfo, Event, Callback };
 //# sourceMappingURL=index.d.ts.map

@@ -5,31 +5,31 @@ const node_events_1 = require("node:events");
 const node_fs_1 = require("node:fs");
 const axios_1 = require("axios");
 const node_process_1 = require("node:process");
-class UpdateMods {
+class ModsUpdater {
     event = new node_events_1.EventEmitter();
     modInfo;
     mods;
     instance;
     filesData = {
-        succeed: [],
-        fail: []
+        'succeed': [],
+        'fail': []
     };
     constructor(filePath, config) {
         this.instance = (0, axios_1.create)({
-            baseURL: 'https://api.curseforge.com/v1/mods',
-            method: 'GET',
-            params: {
-                gameVersion: '1.20.1',
-                modLoaderType: 1
+            'baseURL': 'https://api.curseforge.com/v1/mods',
+            'method': 'GET',
+            'params': {
+                'gameVersion': '1.20.1',
+                'modLoaderType': 1
             },
-            headers: {
+            'headers': {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 'x-api-key': config.apiKey
             }
         });
         this.modInfo = JSON.parse((0, node_fs_1.readFileSync)(filePath, {
-            encoding: 'utf-8'
+            'encoding': 'utf-8'
         }));
         this.mods = [...new Set(this.modInfo.files.map(({ projectID, fileID, required }) => ({
                 projectID, fileID, required
@@ -45,16 +45,16 @@ class UpdateMods {
             if (required) {
                 if (this.mods.length && projectID && fileID) {
                     const { data } = await this.instance.request({
-                        url: `${projectID}/files`,
+                        'url': `${projectID}/files`,
                     });
-                    let mods = Object.assign({ fileID }, data.data[0]);
+                    const mods = Object.assign({ fileID }, data.data[0]);
                     if (mods.id !== fileID || config.forceDownload) {
                         if (mods.downloadUrl) {
-                            this.event.emit('download', mods);
+                            this.event.emit('downloading', mods);
                             await this.downloadFile(mods, (0, node_path_1.join)(config.outDir, 'MinecraftModsUpdate'));
                         }
                         else {
-                            this.event.emit('error', mods);
+                            this.event.emit('errored', mods);
                             this.writeManifest(mods, false);
                             this.event.emit('getNextModInfo', this.mods.shift());
                         }
@@ -67,7 +67,7 @@ class UpdateMods {
                 }
                 else {
                     (0, node_fs_1.writeFileSync)('MinecraftModsUpdate.json', JSON.stringify(this.filesData, null, 2));
-                    this.event.emit('done', this.filesData);
+                    this.event.emit('finished', this.filesData);
                     (0, node_process_1.exit)(0);
                 }
             }
@@ -75,8 +75,8 @@ class UpdateMods {
     }
     async downloadFile(mods, path) {
         const { data } = await (0, axios_1.request)({
-            url: mods.downloadUrl,
-            responseType: 'stream'
+            'url': mods.downloadUrl,
+            'responseType': 'stream'
         });
         data.pipe(this.createFile(mods.fileName, path));
         this.writeManifest(mods, true);
@@ -84,20 +84,23 @@ class UpdateMods {
         this.event.emit('getNextModInfo', this.mods.shift());
     }
     createFile(fileName, path) {
-        if (!(0, node_fs_1.existsSync)(path))
+        if (!(0, node_fs_1.existsSync)(path)) {
             (0, node_fs_1.mkdirSync)(path);
+        }
         return (0, node_fs_1.createWriteStream)((0, node_path_1.join)(path, fileName));
     }
     writeManifest(mods, status) {
         const modsInfo = {
-            projectID: mods.modId,
-            fileID: mods.id,
-            required: true
+            'projectID': mods.modId,
+            'fileID': mods.id,
+            'required': true
         };
-        if (status)
+        if (status) {
             this.filesData.succeed.push(modsInfo);
-        else
-            modsInfo.projectID && modsInfo.fileID ? this.filesData.fail.push(modsInfo) : void 0;
+        }
+        else if (!status && modsInfo.projectID && modsInfo.fileID) {
+            this.filesData.fail.push(modsInfo);
+        }
     }
 }
-exports.default = UpdateMods;
+exports.default = ModsUpdater;

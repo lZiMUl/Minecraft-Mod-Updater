@@ -25,7 +25,7 @@ interface FilesInfo {
     succeed: ModFormat[];
     fail: ModFormat[];
 }
-type Event = 'download' | 'downloaded' | 'skipped' | 'done' | 'error';
-type Callback<T> = (mods: T) => void;
+type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
+type Callback<T> = (data: T) => void;
 export type { Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback };
 //# sourceMappingURL=index.d.ts.map
