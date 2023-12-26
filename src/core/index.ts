@@ -114,7 +114,7 @@ class ModsUpdater {
         };
         if (status) {
             this.filesData.succeed.push(modsInfo);
-        } else if (!status && modsInfo.projectID && modsInfo.fileID){
+        } else if (!status && modsInfo.projectID && modsInfo.fileID) {
             this.filesData.fail.push(modsInfo);
         }
     }
