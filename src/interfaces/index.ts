@@ -22,11 +22,27 @@ interface ModInfo extends ModFormat {
 }
 
 interface FilesFormat {
+    minecraft: {
+        version: string;
+        modLoaders: {
+            id: string;
+            primary: boolean;
+        };
+    };
+    manifestType: string;
+    manifestVersion: number;
+    name: string;
+    version: string;
+    author: string;
     files: ModFormat[];
-    data: ModInfo[]
+    overrides: string;
 }
 
 interface FilesInfo {
+    data: ModInfo[];
+}
+
+interface FilesStatus {
     succeed: ModFormat[];
     fail: ModFormat[];
 }
@@ -35,4 +51,4 @@ type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
 // eslint-disable-next-line no-unused-vars
 type Callback<T> = (data: T) => void;
 
-export type { Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, Event, Callback };
+export type { Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, FilesStatus, Event, Callback };

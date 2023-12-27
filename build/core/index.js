@@ -10,16 +10,36 @@ class ModsUpdater {
     modInfo;
     mods;
     instance;
-    filesData = {
+    manifest;
+    filesStatus = {
         'succeed': [],
         'fail': []
     };
     constructor(filePath, config) {
+        this.modInfo = JSON.parse((0, node_fs_1.readFileSync)(filePath, {
+            'encoding': 'utf-8'
+        }));
+        this.manifest = {
+            'minecraft': {
+                'version': this.modInfo.minecraft.version,
+                'modLoaders': {
+                    'id': this.modInfo.minecraft.modLoaders.id,
+                    'primary': this.modInfo.minecraft.modLoaders.primary
+                }
+            },
+            'manifestType': this.modInfo.manifestType,
+            'manifestVersion': this.modInfo.manifestVersion,
+            'name': this.modInfo.name,
+            'version': this.modInfo.version,
+            'author': this.modInfo.author,
+            'files': [],
+            'overrides': this.modInfo.overrides,
+        };
         this.instance = (0, axios_1.create)({
             'baseURL': 'https://api.curseforge.com/v1/mods',
             'method': 'GET',
             'params': {
-                'gameVersion': '1.20.1',
+                'gameVersion': this.modInfo.minecraft.version,
                 'modLoaderType': 1
             },
             'headers': {
@@ -28,9 +48,6 @@ class ModsUpdater {
                 'x-api-key': config.apiKey
             }
         });
-        this.modInfo = JSON.parse((0, node_fs_1.readFileSync)(filePath, {
-            'encoding': 'utf-8'
-        }));
         this.mods = [...new Set(this.modInfo.files.map(({ projectID, fileID, required }) => ({
                 projectID, fileID, required
             })))];
@@ -66,8 +83,9 @@ class ModsUpdater {
                     }
                 }
                 else {
-                    (0, node_fs_1.writeFileSync)('MinecraftModsUpdate.json', JSON.stringify(this.filesData, null, 2));
-                    this.event.emit('finished', this.filesData);
+                    (0, node_fs_1.writeFileSync)('new.manifest.json', JSON.stringify(this.manifest, null, 2));
+                    (0, node_fs_1.writeFileSync)('MinecraftModsUpdate.json', JSON.stringify(this.filesStatus, null, 2));
+                    this.event.emit('finished', this.filesStatus);
                     (0, node_process_1.exit)(0);
                 }
             }
@@ -93,13 +111,14 @@ class ModsUpdater {
         const modsInfo = {
             'projectID': mods.modId,
             'fileID': mods.id,
-            'required': true
+            'required': mods.required
         };
         if (status) {
-            this.filesData.succeed.push(modsInfo);
+            this.manifest.files.push(modsInfo);
+            this.filesStatus.succeed.push(modsInfo);
         }
         else if (!status && modsInfo.projectID && modsInfo.fileID) {
-            this.filesData.fail.push(modsInfo);
+            this.filesStatus.fail.push(modsInfo);
         }
     }
 }

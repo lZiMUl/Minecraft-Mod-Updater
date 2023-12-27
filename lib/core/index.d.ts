@@ -4,7 +4,8 @@ declare class ModsUpdater {
     private readonly modInfo;
     private readonly mods;
     private readonly instance;
-    private filesData;
+    private readonly manifest;
+    private readonly filesStatus;
     constructor(filePath: string, config: Config);
     addListener<T>(event: Event, callback: Callback<T>): void;
     private update;

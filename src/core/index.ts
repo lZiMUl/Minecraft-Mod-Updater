@@ -10,6 +10,7 @@ import {
     type Event,
     type FilesFormat,
     type FilesInfo,
+    type FilesStatus,
     type ModFormat,
     type ModInfo
 } from '../interfaces';
@@ -19,17 +20,37 @@ class ModsUpdater {
     private readonly modInfo: FilesFormat;
     private readonly mods: ModFormat[];
     private readonly instance: AxiosInstance;
-    private filesData: FilesInfo = {
+    private readonly manifest: FilesFormat;
+    private readonly filesStatus: FilesStatus = {
         'succeed': [],
         'fail': []
     };
 
     public constructor(filePath: string, config: Config) {
+        this.modInfo = JSON.parse(readFileSync(filePath, {
+            'encoding': 'utf-8'
+        }));
+        this.manifest = {
+            'minecraft': {
+                'version': this.modInfo.minecraft.version,
+                'modLoaders': {
+                    'id': this.modInfo.minecraft.modLoaders.id,
+                    'primary': this.modInfo.minecraft.modLoaders.primary
+                }
+            },
+            'manifestType': this.modInfo.manifestType,
+            'manifestVersion': this.modInfo.manifestVersion,
+            'name': this.modInfo.name,
+            'version': this.modInfo.version,
+            'author': this.modInfo.author,
+            'files': [],
+            'overrides': this.modInfo.overrides,
+        };
         this.instance = create({
             'baseURL': 'https://api.curseforge.com/v1/mods',
             'method': 'GET',
             'params': {
-                'gameVersion': '1.20.1',
+                'gameVersion': this.modInfo.minecraft.version,
                 'modLoaderType': 1
             },
             'headers': {
@@ -38,10 +59,6 @@ class ModsUpdater {
                 'x-api-key': config.apiKey
             }
         });
-
-        this.modInfo = JSON.parse(readFileSync(filePath, {
-            'encoding': 'utf-8'
-        }));
         this.mods = [ ...new Set(this.modInfo.files.map(({ projectID, fileID, required }: ModFormat): ModFormat => ({
             projectID, fileID, required
         }))) ];
@@ -61,7 +78,7 @@ class ModsUpdater {
         }: ModFormat): Promise<void> => {
             if (required) {
                 if (this.mods.length && projectID && fileID) {
-                    const { data }: AxiosResponse<FilesFormat> = await this.instance.request({
+                    const { data }: AxiosResponse<FilesInfo> = await this.instance.request({
                         'url': `${projectID}/files`,
                     });
                     const mods: ModInfo = Object.assign({ fileID }, data.data[0]);
@@ -80,8 +97,9 @@ class ModsUpdater {
                         this.event.emit('getNextModInfo', this.mods.shift());
                     }
                 } else {
-                    writeFileSync('MinecraftModsUpdate.json', JSON.stringify(this.filesData, null, 2));
-                    this.event.emit('finished', this.filesData);
+                    writeFileSync('new.manifest.json', JSON.stringify(this.manifest, null, 2));
+                    writeFileSync('MinecraftModsUpdate.json', JSON.stringify(this.filesStatus, null, 2));
+                    this.event.emit('finished', this.filesStatus);
                     exit(0);
                 }
             }
@@ -110,12 +128,13 @@ class ModsUpdater {
         const modsInfo: ModFormat = {
             'projectID': mods.modId,
             'fileID': mods.id,
-            'required': true
+            'required': mods.required
         };
         if (status) {
-            this.filesData.succeed.push(modsInfo);
+            this.manifest.files.push(modsInfo);
+            this.filesStatus.succeed.push(modsInfo);
         } else if (!status && modsInfo.projectID && modsInfo.fileID) {
-            this.filesData.fail.push(modsInfo);
+            this.filesStatus.fail.push(modsInfo);
         }
     }
 }
