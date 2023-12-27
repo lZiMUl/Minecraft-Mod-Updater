@@ -8,49 +8,48 @@ import {
     type Callback,
     type Config,
     type Event,
-    type FilesFormat,
     type FilesInfo,
     type FilesStatus,
+    type ManifestFormat,
     type ModFormat,
-    type ModInfo
+    type ModInfo,
+    type ModLoader
 } from '../interfaces';
 
 class ModsUpdater {
     private readonly event: EventEmitter = new EventEmitter();
-    private readonly modInfo: FilesFormat;
+    private readonly manifestInfo: ManifestFormat;
     private readonly mods: ModFormat[];
     private readonly instance: AxiosInstance;
-    private readonly manifest: FilesFormat;
+    private readonly manifest: ManifestFormat;
     private readonly filesStatus: FilesStatus = {
         'succeed': [],
         'fail': []
     };
 
     public constructor(filePath: string, config: Config) {
-        this.modInfo = JSON.parse(readFileSync(filePath, {
+        this.manifestInfo = JSON.parse(readFileSync(filePath, {
             'encoding': 'utf-8'
         }));
         this.manifest = {
             'minecraft': {
-                'version': this.modInfo.minecraft.version,
-                'modLoaders': {
-                    'id': this.modInfo.minecraft.modLoaders.id,
-                    'primary': this.modInfo.minecraft.modLoaders.primary
-                }
+                'version': this.manifestInfo.minecraft.version,
+                'modLoaders': []
             },
-            'manifestType': this.modInfo.manifestType,
-            'manifestVersion': this.modInfo.manifestVersion,
-            'name': this.modInfo.name,
-            'version': this.modInfo.version,
-            'author': this.modInfo.author,
+            'manifestType': this.manifestInfo.manifestType,
+            'manifestVersion': this.manifestInfo.manifestVersion,
+            'name': this.manifestInfo.name,
+            'version': this.manifestInfo.version,
+            'author': this.manifestInfo.author,
             'files': [],
-            'overrides': this.modInfo.overrides,
+            'overrides': this.manifestInfo.overrides,
         };
+        this.manifestInfo.minecraft.modLoaders.forEach((item: ModLoader): number => this.manifest.minecraft.modLoaders.push(item));
         this.instance = create({
             'baseURL': 'https://api.curseforge.com/v1/mods',
             'method': 'GET',
             'params': {
-                'gameVersion': this.modInfo.minecraft.version,
+                'gameVersion': this.manifestInfo.minecraft.version,
                 'modLoaderType': 1
             },
             'headers': {
@@ -59,7 +58,7 @@ class ModsUpdater {
                 'x-api-key': config.apiKey
             }
         });
-        this.mods = [ ...new Set(this.modInfo.files.map(({ projectID, fileID, required }: ModFormat): ModFormat => ({
+        this.mods = [ ...new Set(this.manifestInfo.files.map(({ projectID, fileID, required }: ModFormat): ModFormat => ({
             projectID, fileID, required
         }))) ];
         this.update(config);
@@ -128,7 +127,11 @@ class ModsUpdater {
         const modsInfo: ModFormat = {
             'projectID': mods.modId,
             'fileID': mods.id,
-            'required': mods.required
+            'required': this.manifestInfo.files.find((modMetaInfo: ModFormat): ModFormat | void => {
+                if (modMetaInfo.projectID === mods.modId) {
+                    return modMetaInfo;
+                }
+            })?.required ?? false
         };
         if (status) {
             this.manifest.files.push(modsInfo);
@@ -140,4 +143,14 @@ class ModsUpdater {
 }
 
 export default ModsUpdater;
-export type { FilesFormat, ModFormat, ModInfo, FilesInfo, Event, Callback };
+export type {
+    Callback,
+    Config,
+    Event,
+    ManifestFormat,
+    FilesInfo,
+    FilesStatus,
+    ModLoader,
+    ModFormat,
+    ModInfo
+};

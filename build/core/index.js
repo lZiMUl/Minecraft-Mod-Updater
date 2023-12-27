@@ -7,7 +7,7 @@ const axios_1 = require("axios");
 const node_process_1 = require("node:process");
 class ModsUpdater {
     event = new node_events_1.EventEmitter();
-    modInfo;
+    manifestInfo;
     mods;
     instance;
     manifest;
@@ -16,30 +16,28 @@ class ModsUpdater {
         'fail': []
     };
     constructor(filePath, config) {
-        this.modInfo = JSON.parse((0, node_fs_1.readFileSync)(filePath, {
+        this.manifestInfo = JSON.parse((0, node_fs_1.readFileSync)(filePath, {
             'encoding': 'utf-8'
         }));
         this.manifest = {
             'minecraft': {
-                'version': this.modInfo.minecraft.version,
-                'modLoaders': {
-                    'id': this.modInfo.minecraft.modLoaders.id,
-                    'primary': this.modInfo.minecraft.modLoaders.primary
-                }
+                'version': this.manifestInfo.minecraft.version,
+                'modLoaders': []
             },
-            'manifestType': this.modInfo.manifestType,
-            'manifestVersion': this.modInfo.manifestVersion,
-            'name': this.modInfo.name,
-            'version': this.modInfo.version,
-            'author': this.modInfo.author,
+            'manifestType': this.manifestInfo.manifestType,
+            'manifestVersion': this.manifestInfo.manifestVersion,
+            'name': this.manifestInfo.name,
+            'version': this.manifestInfo.version,
+            'author': this.manifestInfo.author,
             'files': [],
-            'overrides': this.modInfo.overrides,
+            'overrides': this.manifestInfo.overrides,
         };
+        this.manifestInfo.minecraft.modLoaders.forEach((item) => this.manifest.minecraft.modLoaders.push(item));
         this.instance = (0, axios_1.create)({
             'baseURL': 'https://api.curseforge.com/v1/mods',
             'method': 'GET',
             'params': {
-                'gameVersion': this.modInfo.minecraft.version,
+                'gameVersion': this.manifestInfo.minecraft.version,
                 'modLoaderType': 1
             },
             'headers': {
@@ -48,7 +46,7 @@ class ModsUpdater {
                 'x-api-key': config.apiKey
             }
         });
-        this.mods = [...new Set(this.modInfo.files.map(({ projectID, fileID, required }) => ({
+        this.mods = [...new Set(this.manifestInfo.files.map(({ projectID, fileID, required }) => ({
                 projectID, fileID, required
             })))];
         this.update(config);
@@ -111,7 +109,11 @@ class ModsUpdater {
         const modsInfo = {
             'projectID': mods.modId,
             'fileID': mods.id,
-            'required': mods.required
+            'required': this.manifestInfo.files.find((modMetaInfo) => {
+                if (modMetaInfo.projectID === mods.modId) {
+                    return modMetaInfo;
+                }
+            })?.required ?? false
         };
         if (status) {
             this.manifest.files.push(modsInfo);

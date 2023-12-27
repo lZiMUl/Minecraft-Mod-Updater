@@ -1,7 +1,7 @@
-import { type Callback, type Config, type Event, type FilesFormat, type FilesInfo, type ModFormat, type ModInfo } from '../interfaces';
+import { type Callback, type Config, type Event, type FilesInfo, type FilesStatus, type ManifestFormat, type ModFormat, type ModInfo, type ModLoader } from '../interfaces';
 declare class ModsUpdater {
     private readonly event;
-    private readonly modInfo;
+    private readonly manifestInfo;
     private readonly mods;
     private readonly instance;
     private readonly manifest;
@@ -14,5 +14,5 @@ declare class ModsUpdater {
     private writeManifest;
 }
 export default ModsUpdater;
-export type { FilesFormat, ModFormat, ModInfo, FilesInfo, Event, Callback };
+export type { Callback, Config, Event, ManifestFormat, FilesInfo, FilesStatus, ModLoader, ModFormat, ModInfo };
 //# sourceMappingURL=index.d.ts.map

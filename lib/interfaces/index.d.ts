@@ -17,13 +17,14 @@ interface ModInfo extends ModFormat {
     fileName: string;
     downloadUrl: string | undefined;
 }
-interface FilesFormat {
+interface ModLoader {
+    id: number;
+    primary: boolean;
+}
+interface ManifestFormat {
     minecraft: {
         version: string;
-        modLoaders: {
-            id: string;
-            primary: boolean;
-        };
+        modLoaders: ModLoader[];
     };
     manifestType: string;
     manifestVersion: number;
@@ -42,5 +43,5 @@ interface FilesStatus {
 }
 type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
 type Callback<T> = (data: T) => void;
-export type { Config, Parameter, ModFormat, ModInfo, FilesFormat, FilesInfo, FilesStatus, Event, Callback };
+export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, FilesInfo, FilesStatus, Event, Callback };
 //# sourceMappingURL=index.d.ts.map
