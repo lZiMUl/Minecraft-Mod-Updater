@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
-    </list>
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -255,7 +243,7 @@
       <workItem from="1703757474555" duration="1378000" />
       <workItem from="1703758888133" duration="254000" />
       <workItem from="1703759780372" duration="3514000" />
-      <workItem from="1703781549925" duration="9139000" />
+      <workItem from="1703781549925" duration="9445000" />
     </task>
     <task id="LOCAL-00001" summary="My new Project">
       <option name="closed" value="true" />
@@ -449,7 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703763213670</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Fixed Project">
+      <option name="closed" value="true" />
+      <created>1703790769026</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1703790769026</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
