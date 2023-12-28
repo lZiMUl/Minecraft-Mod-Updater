@@ -1,18 +1,19 @@
-import { type Callback, type Config, type Event, type FilesInfo, type FilesStatus, type ManifestFormat, type ModFormat, type ModInfo, type ModLoader } from '../interfaces';
-declare class ModsUpdater {
+import { type Callback, type Config, type Event, type ForgeResponseData, type ManifestFormat, type ModFormat, type ModInfo, type ModLoader, type ModUpdateStatus } from '../interfaces';
+declare class ModUpdater {
     private readonly event;
     private readonly manifestInfo;
-    private readonly mods;
+    private readonly modList;
     private readonly instance;
     private readonly manifest;
-    private readonly filesStatus;
+    private readonly modStatus;
     constructor(filePath: string, config: Config);
     addListener<T>(event: Event, callback: Callback<T>): void;
+    private get nextModMetaInfo();
     private update;
-    private downloadFile;
     private createFile;
+    private downloadFile;
     private writeManifest;
 }
-export default ModsUpdater;
-export type { Callback, Config, Event, ManifestFormat, FilesInfo, FilesStatus, ModLoader, ModFormat, ModInfo };
+export default ModUpdater;
+export type { Callback, Config, Event, ManifestFormat, ForgeResponseData, ModUpdateStatus, ModLoader, ModFormat, ModInfo };
 //# sourceMappingURL=index.d.ts.map

@@ -4,7 +4,7 @@ interface Config {
     forceDownload: boolean;
 }
 interface Parameter extends Config {
-    filePath: string;
+    manifestPath: string;
 }
 interface ModFormat {
     projectID: number;
@@ -21,6 +21,10 @@ interface ModLoader {
     id: number;
     primary: boolean;
 }
+interface ModUpdateStatus {
+    succeed: ModFormat[];
+    fail: ModFormat[];
+}
 interface ManifestFormat {
     minecraft: {
         version: string;
@@ -34,14 +38,10 @@ interface ManifestFormat {
     files: ModFormat[];
     overrides: string;
 }
-interface FilesInfo {
+interface ForgeResponseData {
     data: ModInfo[];
-}
-interface FilesStatus {
-    succeed: ModFormat[];
-    fail: ModFormat[];
 }
 type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
 type Callback<T> = (data: T) => void;
-export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, FilesInfo, FilesStatus, Event, Callback };
+export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, ForgeResponseData, ModUpdateStatus, Event, Callback };
 //# sourceMappingURL=index.d.ts.map

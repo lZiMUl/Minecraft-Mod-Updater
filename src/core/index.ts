@@ -8,21 +8,21 @@ import {
     type Callback,
     type Config,
     type Event,
-    type FilesInfo,
-    type FilesStatus,
+    type ForgeResponseData,
     type ManifestFormat,
     type ModFormat,
     type ModInfo,
-    type ModLoader
+    type ModLoader,
+    type ModUpdateStatus
 } from '../interfaces';
 
-class ModsUpdater {
+class ModUpdater {
     private readonly event: EventEmitter = new EventEmitter();
     private readonly manifestInfo: ManifestFormat;
-    private readonly mods: ModFormat[];
+    private readonly modList: ModFormat[];
     private readonly instance: AxiosInstance;
     private readonly manifest: ManifestFormat;
-    private readonly filesStatus: FilesStatus = {
+    private readonly modStatus: ModUpdateStatus = {
         'succeed': [],
         'fail': []
     };
@@ -58,15 +58,23 @@ class ModsUpdater {
                 'x-api-key': config.apiKey
             }
         });
-        this.mods = [ ...new Set(this.manifestInfo.files.map(({ projectID, fileID, required }: ModFormat): ModFormat => ({
+        this.modList = [ ...new Set(this.manifestInfo.files.map(({
+            projectID,
+            fileID,
+            required
+        }: ModFormat): ModFormat => ({
             projectID, fileID, required
         }))) ];
         this.update(config);
-        this.event.emit('getNextModInfo', this.mods.shift());
+        this.event.emit('getNextModInfo', this.nextModMetaInfo);
     }
 
     public addListener<T>(event: Event, callback: Callback<T>): void {
         this.event.addListener(event, callback);
+    }
+
+    private get nextModMetaInfo(): ModFormat | void {
+        return this.modList.shift();
     }
 
     private update(config: Config): void {
@@ -76,44 +84,33 @@ class ModsUpdater {
             required
         }: ModFormat): Promise<void> => {
             if (required) {
-                if (this.mods.length && projectID && fileID) {
-                    const { data }: AxiosResponse<FilesInfo> = await this.instance.request({
+                if (this.modList.length && projectID && fileID) {
+                    const { data }: AxiosResponse<ForgeResponseData> = await this.instance.request({
                         'url': `${projectID}/files`,
                     });
-                    const mods: ModInfo = Object.assign({ fileID }, data.data[0]);
-                    if (mods.id !== fileID || config.forceDownload) {
-                        if (mods.downloadUrl) {
-                            this.event.emit('downloading', mods);
-                            await this.downloadFile(mods, join(config.outDir, 'MinecraftModsUpdate'));
+                    const mod: ModInfo = Object.assign({ fileID }, data.data[0]);
+                    if (mod.id !== fileID || config.forceDownload) {
+                        if (mod.downloadUrl) {
+                            this.event.emit('downloading', mod);
+                            await this.downloadFile(mod, join(config.outDir, 'MinecraftModsUpdate'));
                         } else {
-                            this.event.emit('errored', mods);
-                            this.writeManifest(mods, false);
-                            this.event.emit('getNextModInfo', this.mods.shift());
+                            this.event.emit('errored', mod);
+                            this.writeManifest(mod, false);
+                            this.event.emit('getNextModInfo', this.nextModMetaInfo);
                         }
                     } else {
-                        this.event.emit('skipped', mods);
-                        this.writeManifest(mods, true);
-                        this.event.emit('getNextModInfo', this.mods.shift());
+                        this.event.emit('skipped', mod);
+                        this.writeManifest(mod, true);
+                        this.event.emit('getNextModInfo', this.nextModMetaInfo);
                     }
                 } else {
-                    writeFileSync('new.manifest.json', JSON.stringify(this.manifest, null, 2));
-                    writeFileSync('MinecraftModsUpdate.json', JSON.stringify(this.filesStatus, null, 2));
-                    this.event.emit('finished', this.filesStatus);
+                    writeFileSync(join(config.outDir, 'new.manifest.json'), JSON.stringify(this.manifest, null, 2));
+                    writeFileSync(join(config.outDir, 'MinecraftModsUpdate.json'), JSON.stringify(this.modStatus, null, 2));
+                    this.event.emit('finished', this.modStatus);
                     exit(0);
                 }
             }
         });
-    }
-
-    private async downloadFile(mods: ModInfo, path: string): Promise<void> {
-        const { data }: AxiosResponse<WriteStream> = await request({
-            'url': mods.downloadUrl,
-            'responseType': 'stream'
-        });
-        data.pipe(this.createFile(mods.fileName, path));
-        this.writeManifest(mods, true);
-        this.event.emit('downloaded', mods);
-        this.event.emit('getNextModInfo', this.mods.shift());
     }
 
     private createFile(fileName: string, path: string): WriteStream {
@@ -123,33 +120,44 @@ class ModsUpdater {
         return createWriteStream(join(path, fileName));
     }
 
-    private writeManifest(mods: ModInfo, status: boolean): void {
-        const modsInfo: ModFormat = {
-            'projectID': mods.modId,
-            'fileID': mods.id,
+    private async downloadFile(mod: ModInfo, path: string): Promise<void> {
+        const { data }: AxiosResponse<WriteStream> = await request({
+            'url': mod.downloadUrl,
+            'responseType': 'stream'
+        });
+        data.pipe(this.createFile(mod.fileName, path));
+        this.writeManifest(mod, true);
+        this.event.emit('downloaded', mod);
+        this.event.emit('getNextModInfo', this.nextModMetaInfo);
+    }
+
+    private writeManifest(mod: ModInfo, status: boolean): void {
+        const modInfo: ModFormat = {
+            'projectID': mod.modId,
+            'fileID': mod.id,
             'required': this.manifestInfo.files.find((modMetaInfo: ModFormat): ModFormat | void => {
-                if (modMetaInfo.projectID === mods.modId) {
+                if (modMetaInfo.projectID === mod.modId) {
                     return modMetaInfo;
                 }
             })?.required ?? false
         };
         if (status) {
-            this.manifest.files.push(modsInfo);
-            this.filesStatus.succeed.push(modsInfo);
-        } else if (!status && modsInfo.projectID && modsInfo.fileID) {
-            this.filesStatus.fail.push(modsInfo);
+            this.manifest.files.push(modInfo);
+            this.modStatus.succeed.push(modInfo);
+        } else if (!status && modInfo.projectID && modInfo.fileID) {
+            this.modStatus.fail.push(modInfo);
         }
     }
 }
 
-export default ModsUpdater;
+export default ModUpdater;
 export type {
     Callback,
     Config,
     Event,
     ManifestFormat,
-    FilesInfo,
-    FilesStatus,
+    ForgeResponseData,
+    ModUpdateStatus,
     ModLoader,
     ModFormat,
     ModInfo

@@ -1,7 +1,7 @@
 {
   "name": "minecraft-mods-updater",
   "description": "A Minecraft mod update tool based on Node.js",
-  "version": "1.4.13",
+  "version": "1.4.14",
   "author": {
     "name": "lZiMUl",
     "email": "AA2908554069@gmail.com",

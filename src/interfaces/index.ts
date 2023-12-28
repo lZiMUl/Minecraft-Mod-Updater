@@ -5,7 +5,7 @@ interface Config {
 }
 
 interface Parameter extends Config {
-    filePath: string;
+    manifestPath: string;
 }
 
 interface ModFormat {
@@ -26,6 +26,11 @@ interface ModLoader {
     primary: boolean;
 }
 
+interface ModUpdateStatus {
+    succeed: ModFormat[];
+    fail: ModFormat[];
+}
+
 interface ManifestFormat {
     minecraft: {
         version: string;
@@ -40,17 +45,23 @@ interface ManifestFormat {
     overrides: string;
 }
 
-interface FilesInfo {
+interface ForgeResponseData {
     data: ModInfo[];
-}
-
-interface FilesStatus {
-    succeed: ModFormat[];
-    fail: ModFormat[];
 }
 
 type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
 // eslint-disable-next-line no-unused-vars
 type Callback<T> = (data: T) => void;
 
-export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, FilesInfo, FilesStatus, Event, Callback };
+export type {
+    Config,
+    Parameter,
+    ModFormat,
+    ModInfo,
+    ModLoader,
+    ManifestFormat,
+    ForgeResponseData,
+    ModUpdateStatus,
+    Event,
+    Callback
+};
