@@ -7,6 +7,7 @@ import { exit } from 'node:process';
 import {
     type Callback,
     type Config,
+    ErrorEnum,
     type Event,
     type ForgeResponseData,
     type ManifestFormat,
@@ -95,7 +96,7 @@ class ModUpdater {
                             this.event.emit('downloading', mod);
                             await this.downloadFile(mod, join(config.outDir, 'Minecraft Mod Update'));
                         } else {
-                            this.event.emit('errored', { 'type': 'address', mod });
+                            this.event.emit('errored', { 'type': ErrorEnum.ADDRESS, mod });
                             this.writeModStatus(mod, false);
                             this.event.emit('getNextModInfo', this.nextModMetaInfo);
                         }
@@ -133,7 +134,7 @@ class ModUpdater {
                 this.event.emit('getNextModInfo', this.nextModMetaInfo);
             }).addListener('error', (): void => {
                 this.writeModStatus(mod, false);
-                this.event.emit('errored', { 'type': 'download', mod });
+                this.event.emit('errored', { 'type': ErrorEnum.DOWNLOAD, mod });
                 this.event.emit('getNextModInfo', this.nextModMetaInfo);
             });
     }

@@ -1,3 +1,8 @@
+enum ErrorEnum {
+    ADDRESS,
+    DOWNLOAD
+}
+
 interface Config {
     outDir: string;
     apiKey: string;
@@ -50,14 +55,14 @@ interface ForgeResponseData {
 }
 
 interface ErrorType<T> {
-    type: 'address' | 'download';
+    type: ErrorEnum;
     mod: T
 }
 
 type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'downloadErrored' | 'errored';
-
 type Callback<T> = (data: T) => void;
 
+export { ErrorEnum };
 export type {
     Config,
     Parameter,

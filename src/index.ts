@@ -8,7 +8,7 @@ import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 
 
 import { description, version } from '../package.json';
 import ModUpdater, { ModInfo, ModUpdateStatus } from './core/index';
-import { ErrorType, Parameter } from './interfaces';
+import { ErrorEnum, ErrorType, Parameter } from './interfaces';
 
 const command: Command = new Command('mcmu');
 const program: Command = command.description(description).version(version);
@@ -35,10 +35,10 @@ if (apiKey !== 'none') {
         modUpdate.addListener<ModUpdateStatus>('finished', (mod: ModUpdateStatus): void => info(mod, '\n', greenBright('The update is complete')));
         modUpdate.addListener<ErrorType<ModInfo>>('errored', ({ type, mod }: ErrorType<ModInfo>): void => {
             switch (type) {
-            case 'address':
+            case ErrorEnum.ADDRESS:
                 error(`${redBright('=====Error: Unable to get file address, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);
                 break;
-            case 'download':
+            case ErrorEnum.DOWNLOAD:
                 error(`${redBright('=====Error: Unable to download the file, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);
                 break;
             }

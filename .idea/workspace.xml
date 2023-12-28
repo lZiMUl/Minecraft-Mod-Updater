@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project" />
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/index.d.ts.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +86,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -120,6 +130,23 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="C:\Users\AA290\AppData\Local\Temp\qodana_output\qodana.sarif.json" />
+        <option name="reportGuid" value="f62d6611-053d-48eb-a9c8-fcf55d0740df" />
+        <option name="reportName" value="Minecraft Mods Updater/qodana/2023-12-28" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\AA290\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="f62d6611-053d-48eb-a9c8-fcf55d0740df" reportId="Minecraft Mods Updater/qodana/2023-12-28" />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Projects\WebStorm\Minecraft Mods Updater" />
@@ -129,7 +156,7 @@
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\src\core" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.test">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -189,8 +216,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
@@ -243,7 +270,7 @@
       <workItem from="1703757474555" duration="1378000" />
       <workItem from="1703758888133" duration="254000" />
       <workItem from="1703759780372" duration="3514000" />
-      <workItem from="1703781549925" duration="9445000" />
+      <workItem from="1703781549925" duration="10117000" />
     </task>
     <task id="LOCAL-00001" summary="My new Project">
       <option name="closed" value="true" />
@@ -445,7 +472,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703790769026</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Fixed Project">
+      <option name="closed" value="true" />
+      <created>1703791162534</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1703791162534</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
