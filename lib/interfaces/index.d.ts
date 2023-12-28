@@ -41,7 +41,11 @@ interface ManifestFormat {
 interface ForgeResponseData {
     data: ModInfo[];
 }
-type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
+interface ErrorType<T> {
+    type: 'address' | 'download';
+    mod: T;
+}
+type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'downloadErrored' | 'errored';
 type Callback<T> = (data: T) => void;
-export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, ForgeResponseData, ModUpdateStatus, Event, Callback };
+export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, ForgeResponseData, ModUpdateStatus, Event, Callback, ErrorType };
 //# sourceMappingURL=index.d.ts.map

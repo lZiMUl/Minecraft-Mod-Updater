@@ -29,7 +29,8 @@ class ModUpdater {
 
     public constructor(filePath: string, config: Config) {
         this.manifestInfo = JSON.parse(readFileSync(filePath, {
-            'encoding': 'utf-8'
+            'encoding': 'utf-8',
+            'flag': 'r'
         }));
         this.manifest = {
             'minecraft': {
@@ -92,20 +93,20 @@ class ModUpdater {
                     if (mod.id !== fileID || config.forceDownload) {
                         if (mod.downloadUrl) {
                             this.event.emit('downloading', mod);
-                            await this.downloadFile(mod, join(config.outDir, 'MinecraftModsUpdate'));
+                            await this.downloadFile(mod, join(config.outDir, 'Minecraft Mod Update'));
                         } else {
-                            this.event.emit('errored', mod);
-                            this.writeManifest(mod, false);
+                            this.event.emit('errored', { 'type': 'address', mod });
+                            this.writeModStatus(mod, false);
                             this.event.emit('getNextModInfo', this.nextModMetaInfo);
                         }
                     } else {
                         this.event.emit('skipped', mod);
-                        this.writeManifest(mod, true);
+                        this.writeModStatus(mod, true);
                         this.event.emit('getNextModInfo', this.nextModMetaInfo);
                     }
                 } else {
                     writeFileSync(join(config.outDir, 'new.manifest.json'), JSON.stringify(this.manifest, null, 2));
-                    writeFileSync(join(config.outDir, 'MinecraftModsUpdate.json'), JSON.stringify(this.modStatus, null, 2));
+                    writeFileSync(join(config.outDir, 'Minecraft Mod Update Status.json'), JSON.stringify(this.modStatus, null, 2));
                     this.event.emit('finished', this.modStatus);
                     exit(0);
                 }
@@ -115,7 +116,7 @@ class ModUpdater {
 
     private createFile(fileName: string, path: string): WriteStream {
         if (!existsSync(path)) {
-            mkdirSync(path);
+            mkdirSync(path, { 'recursive': true });
         }
         return createWriteStream(join(path, fileName));
     }
@@ -125,13 +126,19 @@ class ModUpdater {
             'url': mod.downloadUrl,
             'responseType': 'stream'
         });
-        data.pipe(this.createFile(mod.fileName, path));
-        this.writeManifest(mod, true);
-        this.event.emit('downloaded', mod);
-        this.event.emit('getNextModInfo', this.nextModMetaInfo);
+        data.pipe<WriteStream>(this.createFile(mod.fileName, path))
+            .addListener('finish', (): void => {
+                this.writeModStatus(mod, true);
+                this.event.emit('downloaded', mod);
+                this.event.emit('getNextModInfo', this.nextModMetaInfo);
+            }).addListener('error', (): void => {
+                this.writeModStatus(mod, false);
+                this.event.emit('errored', { 'type': 'download', mod });
+                this.event.emit('getNextModInfo', this.nextModMetaInfo);
+            });
     }
 
-    private writeManifest(mod: ModInfo, status: boolean): void {
+    private writeModStatus(mod: ModInfo, status: boolean): void {
         const modInfo: ModFormat = {
             'projectID': mod.modId,
             'fileID': mod.id,

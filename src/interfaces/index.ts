@@ -49,8 +49,13 @@ interface ForgeResponseData {
     data: ModInfo[];
 }
 
-type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'errored';
-// eslint-disable-next-line no-unused-vars
+interface ErrorType<T> {
+    type: 'address' | 'download';
+    mod: T
+}
+
+type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'downloadErrored' | 'errored';
+
 type Callback<T> = (data: T) => void;
 
 export type {
@@ -63,5 +68,6 @@ export type {
     ForgeResponseData,
     ModUpdateStatus,
     Event,
-    Callback
+    Callback,
+    ErrorType
 };

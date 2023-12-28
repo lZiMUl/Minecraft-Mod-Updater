@@ -7,8 +7,8 @@ import { Command } from 'commander';
 import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
 
 import { description, version } from '../package.json';
-import ModsUpdater, { ModInfo, ModUpdateStatus } from './core/index';
-import { Parameter } from './interfaces';
+import ModUpdater, { ModInfo, ModUpdateStatus } from './core/index';
+import { ErrorType, Parameter } from './interfaces';
 
 const command: Command = new Command('mcmu');
 const program: Command = command.description(description).version(version);
@@ -24,16 +24,25 @@ const { manifestPath, outDir, apiKey, forceDownload }: Parameter = program.opts<
 
 if (apiKey !== 'none') {
     if (existsSync(manifestPath)) {
-        const modUpdate: ModsUpdater = new ModsUpdater(manifestPath, {
+        const modUpdate: ModUpdater = new ModUpdater(manifestPath, {
             outDir,
             apiKey,
             forceDownload
         });
-        modUpdate.addListener<ModInfo>('downloading', (mods: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mods.fileName)} {(${yellowBright(mods.modId)}) [${redBright(mods.fileID)} => ${greenBright(mods.id)}]} -> ${blueBright(mods.downloadUrl)}`));
-        modUpdate.addListener<ModInfo>('downloaded', (mods: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mods.fileName)}\n`));
-        modUpdate.addListener<ModInfo>('skipped', (mods: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mods.fileName)} (${yellowBright(mods.modId)} [${greenBright(mods.fileID)} == ${greenBright(mods.id)}]) \n`));
-        modUpdate.addListener<ModUpdateStatus>('finished', (mods: ModUpdateStatus): void => info(mods, '\n', greenBright('The update is complete')));
-        modUpdate.addListener<ModInfo>('errored', (mods: ModInfo): void => error(`${redBright('=====Error: Unable to get file address, please download it manually=====')}\nMod ID: ${yellowBright(mods.modId)}\nThe name of the mod file: ${magentaBright(mods.fileName)}\n`));
+        modUpdate.addListener<ModInfo>('downloading', (mod: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mod.fileName)} {(${yellowBright(mod.modId)}) [${redBright(mod.fileID)} => ${greenBright(mod.id)}]} -> ${blueBright(mod.downloadUrl)}`));
+        modUpdate.addListener<ModInfo>('downloaded', (mod: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mod.fileName)}\n`));
+        modUpdate.addListener<ModInfo>('skipped', (mod: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mod.fileName)} (${yellowBright(mod.modId)} [${greenBright(mod.fileID)} == ${greenBright(mod.id)}]) \n`));
+        modUpdate.addListener<ModUpdateStatus>('finished', (mod: ModUpdateStatus): void => info(mod, '\n', greenBright('The update is complete')));
+        modUpdate.addListener<ErrorType<ModInfo>>('errored', ({ type, mod }: ErrorType<ModInfo>): void => {
+            switch (type) {
+            case 'address':
+                error(`${redBright('=====Error: Unable to get file address, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);
+                break;
+            case 'download':
+                error(`${redBright('=====Error: Unable to download the file, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);
+                break;
+            }
+        });
     } else {
         error(redBright('The manifest.json file does not exist, please create it and try again alive to view the help with mcmu -h'));
     }

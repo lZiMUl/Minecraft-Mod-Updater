@@ -1,7 +1,7 @@
 {
-  "name": "minecraft-mods-updater",
+  "name": "minecraft-mod-updater",
   "description": "A Minecraft mod update tool based on Node.js",
-  "version": "1.4.14",
+  "version": "1.0.0",
   "author": {
     "name": "lZiMUl",
     "email": "AA2908554069@gmail.com",
@@ -34,7 +34,7 @@
     "lint": "eslint ."
   },
   "bin": {
-    "minecraft-mods-updater": "./build/index.js",
+    "minecraft-mod-updater": "./build/index.js",
     "mcmu": "./build/index.js"
   },
   "exports": {
@@ -55,7 +55,7 @@
   "keywords": [
     "lZiMUl",
     "Minecraft",
-    "Mods",
+    "Mod",
     "Updater"
   ],
   "dependencies": {
@@ -83,10 +83,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lZiMUl/Minecraft-Mods-Updater.git"
+    "url": "git+https://github.com/lZiMUl/Minecraft-Mod-Updater.git"
   },
   "bugs": {
-    "url": "https://github.com/lZiMUl/Minecraft-Mods-Updater/issues/",
+    "url": "https://github.com/lZiMUl/Minecraft-Mod-Updater/issues/",
     "email": "AA2908554069@gmail.com"
   },
   "sideEffects": false,

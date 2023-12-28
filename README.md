@@ -1,10 +1,10 @@
-# Minecraft Mods Updater
+# Minecraft Mod Updater
 A Minecraft mod update tool based on Node.js
 
 ## Installation
 ### Using npm
 ```bash
-npm install -g minecraft-mods-updater
+npm install -g minecraft-mod-updater
 ```
 
 ## Example

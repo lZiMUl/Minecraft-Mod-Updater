@@ -12,7 +12,7 @@ declare class ModUpdater {
     private update;
     private createFile;
     private downloadFile;
-    private writeManifest;
+    private writeModStatus;
 }
 export default ModUpdater;
 export type { Callback, Config, Event, ManifestFormat, ForgeResponseData, ModUpdateStatus, ModLoader, ModFormat, ModInfo };
