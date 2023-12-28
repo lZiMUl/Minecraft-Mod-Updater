@@ -6,11 +6,12 @@ import { join, resolve } from 'node:path';
 import { Command } from 'commander';
 import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
 
+import { description, version } from '../package.json';
 import ModUpdate, { FilesInfo, ModInfo } from './core/index';
 import { Parameter } from './interfaces';
 
 const command: Command = new Command('mcmu');
-const program: Command = command.description('Minecraft Mod Updater').version('1.4.10');
+const program: Command = command.description(description).version(version);
 
 program.option('-fp, --filePath <path>', 'path to the mod file', join(resolve('.'), './manifest.json'));
 program.option('-od, --outDir <path>', 'module output position', resolve('.'));

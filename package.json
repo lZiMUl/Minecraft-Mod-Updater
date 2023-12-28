@@ -1,7 +1,7 @@
 {
   "name": "minecraft-mods-updater",
   "description": "A Minecraft mod update tool based on Node.js",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "author": {
     "name": "lZiMUl",
     "email": "AA2908554069@gmail.com",
@@ -30,12 +30,28 @@
     "start": "node ./build/index.js",
     "build": "tsc",
     "dev": "tsc -w",
-    "test": "node ./test/index.js"
+    "test": "node ./test/index.js",
+    "lint": "eslint ."
   },
   "bin": {
     "minecraft-mods-updater": "./build/index.js",
     "mcmu": "./build/index.js"
   },
+  "exports": {
+    ".": {
+      "require": "./build/index.js",
+      "import": "./build/index.js"
+    },
+    "./*": "./*"
+  },
+  "files": [
+    "/build/",
+    "/lib/",
+    "/src/",
+    "/LICENSE",
+    "/README.md",
+    "/SECURITY.md"
+  ],
   "keywords": [
     "lZiMUl",
     "Minecraft",
@@ -53,11 +69,17 @@
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.5.0",
+    "eslint-plugin-prettier": "^5.1.2",
     "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.1.1",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.10.0"
   },
   "repository": {
     "type": "git",
