@@ -7,7 +7,7 @@ import { Command } from 'commander';
 import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
 
 import { description, version } from '../package.json';
-import ModUpdate, { FilesInfo, ModInfo } from './core/index';
+import ModsUpdater , { FilesInfo, ModInfo } from './core/index';
 import { Parameter } from './interfaces';
 
 const command: Command = new Command('mcmu');
@@ -24,7 +24,7 @@ const { filePath, outDir, apiKey, forceDownload }: Parameter = program.opts<Para
 
 if (apiKey !== 'none') {
     if (existsSync(filePath)) {
-        const modUpdate: ModUpdate = new ModUpdate(filePath, {
+        const modUpdate: ModsUpdater = new ModsUpdater(filePath, {
             outDir,
             apiKey,
             forceDownload
