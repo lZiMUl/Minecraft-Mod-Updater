@@ -10,16 +10,16 @@ npm install -g minecraft-mod-updater
 ## Example
 ```bash
 mcmu -h
-mcmu -mp "./MyModPack/manifest.json" -od "./MyModPack" -ak "xxxxxxxxxxxxxxxxxxxxxx" -fd
+mcmu -i "./MyModPack/manifest.json" -o "./MyModPack" -k "xxxxxxxxxxxxxxxxxxxxxx" -f
 ```
 
 ## Parameter
 ```text
 Options:
-  -V, --version               output the version number
-  -mp, --manifestPath <path>  path to the manifest file
-  -od, --outDir <path>        path to the output
-  -ak, --apiKey <text>        api key
-  -fd, --forceDownload        force download
-  -h, --help                  display help for command
+  -V, --version             output the version number
+  -i, --file <path>         path to the manifest file
+  -o, --outDir <path>       path to the output
+  -k, --apiKey <text>       api key
+  -f, --forceDownload       force download
+  -h, --help                display help for command
 ```

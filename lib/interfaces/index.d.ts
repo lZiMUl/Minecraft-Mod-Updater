@@ -1,6 +1,6 @@
 declare enum ErrorEnum {
-    ADDRESS = 0,
-    DOWNLOAD = 1
+    ADDRESS = "ADDRESS",
+    DOWNLOAD = "DOWNLOAD"
 }
 interface Config {
     outDir: string;
@@ -8,7 +8,7 @@ interface Config {
     forceDownload: boolean;
 }
 interface Parameter extends Config {
-    manifestPath: string;
+    file: string;
 }
 interface ModFormat {
     projectID: number;

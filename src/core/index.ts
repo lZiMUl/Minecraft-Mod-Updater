@@ -5,9 +5,9 @@ import { type AxiosInstance, type AxiosResponse, create, request } from 'axios';
 import { exit } from 'node:process';
 
 import {
+    ErrorEnum,
     type Callback,
     type Config,
-    ErrorEnum,
     type Event,
     type ForgeResponseData,
     type ManifestFormat,

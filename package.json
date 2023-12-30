@@ -1,7 +1,7 @@
 {
   "name": "minecraft-mod-updater",
   "description": "A Minecraft mod update tool based on Node.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "lZiMUl",
     "email": "AA2908554069@gmail.com",
@@ -22,12 +22,12 @@
     }
   ],
   "homepage": "https://lzimul.top",
-  "main": "./build/index.js",
+  "main": "./build/core/index.js",
   "types": "./lib/*",
   "typings": "./lib/*",
   "license": "GPL-3.0",
   "scripts": {
-    "start": "node ./build/index.js",
+    "start": "node ./build/core/index.js",
     "build": "tsc",
     "dev": "tsc -w",
     "test": "node ./test/index.js",
@@ -39,15 +39,14 @@
   },
   "exports": {
     ".": {
-      "require": "./build/index.js",
-      "import": "./build/index.js"
+      "require": "./build/core/index.js",
+      "import": "./build/core/index.js"
     },
     "./*": "./*"
   },
   "files": [
     "/build/",
     "/lib/",
-    "/src/",
     "/LICENSE",
     "/README.md",
     "/SECURITY.md"

@@ -1,6 +1,6 @@
 enum ErrorEnum {
-    ADDRESS,
-    DOWNLOAD
+    ADDRESS = 'ADDRESS',
+    DOWNLOAD = 'DOWNLOAD',
 }
 
 interface Config {
@@ -10,7 +10,7 @@ interface Config {
 }
 
 interface Parameter extends Config {
-    manifestPath: string;
+    file: string;
 }
 
 interface ModFormat {

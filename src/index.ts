@@ -7,24 +7,24 @@ import { Command } from 'commander';
 import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
 
 import { description, version } from '../package.json';
-import ModUpdater, { ModInfo, ModUpdateStatus } from './core/index';
+import ModUpdater, { ModInfo, ModUpdateStatus } from './core';
 import { ErrorEnum, ErrorType, Parameter } from './interfaces';
 
 const command: Command = new Command('mcmu');
 const program: Command = command.description(description).version(version);
 
-program.option('-mp, --manifestPath <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
-program.option('-od, --outDir <path>', 'path to the output', resolve('.'));
-program.option('-ak, --apiKey <text>', 'api key', env.MCMU_APIKEY ?? 'none');
-program.option('-fd, --forceDownload', 'force download', false);
+program.option('-i, --file <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
+program.option('-o, --outDir <path>', 'path to the output', resolve('.'));
+program.option('-k, --apiKey <text>', 'api key', env.MCMU_APIKEY ?? 'none');
+program.option('-f, --forceDownload', 'force download', false);
 
 program.parse(argv);
 
-const { manifestPath, outDir, apiKey, forceDownload }: Parameter = program.opts<Parameter>();
+const { file, outDir, apiKey, forceDownload }: Parameter = program.opts<Parameter>();
 
 if (apiKey !== 'none') {
-    if (existsSync(manifestPath)) {
-        const modUpdate: ModUpdater = new ModUpdater(manifestPath, {
+    if (existsSync(file)) {
+        const modUpdate: ModUpdater = new ModUpdater(file, {
             outDir,
             apiKey,
             forceDownload
