@@ -44,10 +44,5 @@
     "skipLibCheck": true,
     "listEmittedFiles": true,
     "listFiles": true
-  },
-  "exclude": [
-    "build",
-    "lib",
-    "node_modules"
-  ]
+  }
 }

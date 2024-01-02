@@ -1,5 +1,5 @@
 # Minecraft Mod Updater
-A Minecraft mod update tool based on Node.js
+### A Minecraft mod update tool based on Node.js
 
 ## Installation
 ### Using npm
@@ -7,13 +7,34 @@ A Minecraft mod update tool based on Node.js
 npm install -g minecraft-mod-updater
 ```
 
-## Example
+## Command
+### CLI (Command aliases)
 ```bash
-mcmu -h
-mcmu -i "./MyModPack/manifest.json" -o "./MyModPack" -k "xxxxxxxxxxxxxxxxxxxxxx" -f
+minecraft-mod-updater-cli
+mcmu-cli
+mcmuc
+```
+### GUI (Command aliases)
+```bash
+minecraft-mod-updater-gui
+mcmu-gui
+mcmug
 ```
 
-## Parameter
+
+## Example
+### CLI (Parameters are optional)
+```bash
+mcmuc -h
+mcmuc -i "./MyModPack/manifest.json" -o "./MyModPack" -k "xxxxxxxxxxxxxxxxxxxxxx" -f
+```
+### GUI (Parameters are optional)
+```bash
+mcmug -h
+mcmug -i "./MyModPack/manifest.json" -o "./MyModPack" -k "xxxxxxxxxxxxxxxxxxxxxx" -f
+```
+
+## Parameter (General parameters)
 ```text
 Options:
   -V, --version             output the version number

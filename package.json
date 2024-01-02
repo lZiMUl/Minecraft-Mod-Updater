@@ -1,7 +1,7 @@
 {
   "name": "minecraft-mod-updater",
   "description": "A Minecraft mod update tool based on Node.js",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "author": {
     "name": "lZiMUl",
     "email": "AA2908554069@gmail.com",
@@ -22,27 +22,26 @@
     }
   ],
   "homepage": "https://lzimul.top",
-  "main": "./build/core/index.js",
+  "main": "./build/index.js",
   "types": "./lib/*",
   "typings": "./lib/*",
   "license": "GPL-3.0",
   "scripts": {
-    "start": "node ./build/core/index.js",
+    "start": "node .",
     "build": "tsc",
     "dev": "tsc -w",
     "test": "node ./test/index.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start-cli": "node build/bin/cli.js",
+    "start-gui": "node build/bin/gui.js"
   },
   "bin": {
-    "minecraft-mod-updater": "./build/index.js",
-    "mcmu": "./build/index.js"
-  },
-  "exports": {
-    ".": {
-      "require": "./build/core/index.js",
-      "import": "./build/core/index.js"
-    },
-    "./*": "./*"
+    "minecraft-mod-updater-cli": "build/bin/cli.js",
+    "minecraft-mod-updater-gui": "build/bin/gui.js",
+    "mcmu-cli": "build/bin/cli.js",
+    "mcmu-gui": "./build/bin/gui.js",
+    "mcmuc": "build/bin/cli.js",
+    "mcmug": "./build/bin/gui.js"
   },
   "files": [
     "/build/",

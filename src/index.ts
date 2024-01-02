@@ -1,51 +1,172 @@
-#!/usr/bin/env node
-import { argv, env } from 'node:process';
-import { error, info, warn } from 'node:console';
-import { existsSync } from 'node:fs';
-import { join, resolve } from 'node:path';
-import { Command } from 'commander';
-import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
+import { join } from 'node:path';
+import { EventEmitter } from 'node:events';
+import { createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync, type WriteStream } from 'node:fs';
+import { type AxiosInstance, type AxiosResponse, create, request } from 'axios';
+import { exit } from 'node:process';
 
-import { description, version } from '../package.json';
-import ModUpdater, { ModInfo, ModUpdateStatus } from './core';
-import { ErrorEnum, ErrorType, Parameter } from './interfaces';
+import {
+    ErrorEnum,
+    type Callback,
+    type Config,
+    type Event,
+    type ForgeResponseData,
+    type ManifestFormat,
+    type ModFormat,
+    type ModInfo,
+    type ModLoader,
+    type ModUpdateStatus
+} from './interfaces';
 
-const command: Command = new Command('mcmu');
-const program: Command = command.description(description).version(version);
+class ModUpdater {
+    private readonly event: EventEmitter = new EventEmitter();
+    private readonly manifestInfo: ManifestFormat;
+    private readonly modList: ModFormat[];
+    private readonly instance: AxiosInstance;
+    private readonly manifest: ManifestFormat;
+    private readonly modStatus: ModUpdateStatus = {
+        'succeed': [],
+        'fail': []
+    };
 
-program.option('-i, --file <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
-program.option('-o, --outDir <path>', 'path to the output', resolve('.'));
-program.option('-k, --apiKey <text>', 'api key', env.MCMU_APIKEY ?? 'none');
-program.option('-f, --forceDownload', 'force download', false);
-
-program.parse(argv);
-
-const { file, outDir, apiKey, forceDownload }: Parameter = program.opts<Parameter>();
-
-if (apiKey !== 'none') {
-    if (existsSync(file)) {
-        const modUpdate: ModUpdater = new ModUpdater(file, {
-            outDir,
-            apiKey,
-            forceDownload
-        });
-        modUpdate.addListener<ModInfo>('downloading', (mod: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mod.fileName)} {(${yellowBright(mod.modId)}) [${redBright(mod.fileID)} => ${greenBright(mod.id)}]} -> ${blueBright(mod.downloadUrl)}`));
-        modUpdate.addListener<ModInfo>('downloaded', (mod: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mod.fileName)}\n`));
-        modUpdate.addListener<ModInfo>('skipped', (mod: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mod.fileName)} (${yellowBright(mod.modId)} [${greenBright(mod.fileID)} == ${greenBright(mod.id)}]) \n`));
-        modUpdate.addListener<ModUpdateStatus>('finished', (mod: ModUpdateStatus): void => info(mod, '\n', greenBright('The update is complete')));
-        modUpdate.addListener<ErrorType<ModInfo>>('errored', ({ type, mod }: ErrorType<ModInfo>): void => {
-            switch (type) {
-            case ErrorEnum.ADDRESS:
-                error(`${redBright('=====Error: Unable to get file address, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);
-                break;
-            case ErrorEnum.DOWNLOAD:
-                error(`${redBright('=====Error: Unable to download the file, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);
-                break;
+    public constructor(filePath: string, config: Config) {
+        this.manifestInfo = JSON.parse(readFileSync(filePath, {
+            'encoding': 'utf-8',
+            'flag': 'r'
+        }));
+        this.manifest = {
+            'minecraft': {
+                'version': this.manifestInfo.minecraft.version,
+                'modLoaders': []
+            },
+            'manifestType': this.manifestInfo.manifestType,
+            'manifestVersion': this.manifestInfo.manifestVersion,
+            'name': this.manifestInfo.name,
+            'version': this.manifestInfo.version,
+            'author': this.manifestInfo.author,
+            'files': [],
+            'overrides': this.manifestInfo.overrides,
+        };
+        this.manifestInfo.minecraft.modLoaders.forEach((item: ModLoader): number => this.manifest.minecraft.modLoaders.push(item));
+        this.instance = create({
+            'baseURL': 'https://api.curseforge.com/v1/mods',
+            'method': 'GET',
+            'params': {
+                'gameVersion': this.manifestInfo.minecraft.version,
+                'modLoaderType': 1
+            },
+            'headers': {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'x-api-key': config.apiKey
             }
         });
-    } else {
-        error(redBright('The manifest.json file does not exist, please create it and try again alive to view the help with mcmu -h'));
+        this.modList = [ ...new Set(this.manifestInfo.files.map(({
+            projectID,
+            fileID,
+            required
+        }: ModFormat): ModFormat => ({
+            projectID, fileID, required
+        }))) ];
+        this.update(config);
+        this.event.emit('getNextModInfo', this.nextModMetaInfo);
     }
-} else {
-    warn(yellowBright('The MCMU_APIKEY system environment variable could not be found, please add the system environment variable and try again alive to view the help with mcmu -h'));
+
+    public addListener<T>(event: Event, callback: Callback<T>): void {
+        this.event.addListener(event, callback);
+    }
+
+    private get nextModMetaInfo(): ModFormat | void {
+        return this.modList.shift();
+    }
+
+    private update(config: Config): void {
+        this.event.addListener('getNextModInfo', async ({
+            projectID,
+            fileID,
+            required
+        }: ModFormat): Promise<void> => {
+            if (required) {
+                if (this.modList.length && projectID && fileID) {
+                    const { data }: AxiosResponse<ForgeResponseData> = await this.instance.request({
+                        'url': `${projectID}/files`,
+                    });
+                    const mod: ModInfo = Object.assign({ fileID }, data.data[0]);
+                    if (mod.id !== fileID || config.forceDownload) {
+                        if (mod.downloadUrl) {
+                            this.event.emit('downloading', mod);
+                            await this.downloadFile(mod, join(config.outDir, 'Minecraft Mod Update'));
+                        } else {
+                            this.event.emit('errored', { 'type': ErrorEnum.ADDRESS, mod });
+                            this.writeModStatus(mod, false);
+                            this.event.emit('getNextModInfo', this.nextModMetaInfo);
+                        }
+                    } else {
+                        this.event.emit('skipped', mod);
+                        this.writeModStatus(mod, true);
+                        this.event.emit('getNextModInfo', this.nextModMetaInfo);
+                    }
+                } else {
+                    writeFileSync(join(config.outDir, 'new.manifest.json'), JSON.stringify(this.manifest, null, 2));
+                    writeFileSync(join(config.outDir, 'Minecraft Mod Update Status.json'), JSON.stringify(this.modStatus, null, 2));
+                    this.event.emit('finished', this.modStatus);
+                    exit(0);
+                }
+            }
+        });
+    }
+
+    private createFile(fileName: string, path: string): WriteStream {
+        if (!existsSync(path)) {
+            mkdirSync(path, { 'recursive': true });
+        }
+        return createWriteStream(join(path, fileName));
+    }
+
+    private async downloadFile(mod: ModInfo, path: string): Promise<void> {
+        const { data }: AxiosResponse<WriteStream> = await request({
+            'url': mod.downloadUrl,
+            'responseType': 'stream'
+        });
+        data.pipe<WriteStream>(this.createFile(mod.fileName, path))
+            .addListener('finish', (): void => {
+                this.writeModStatus(mod, true);
+                this.event.emit('downloaded', mod);
+                this.event.emit('getNextModInfo', this.nextModMetaInfo);
+            }).addListener('error', (): void => {
+                this.writeModStatus(mod, false);
+                this.event.emit('errored', { 'type': ErrorEnum.DOWNLOAD, mod });
+                this.event.emit('getNextModInfo', this.nextModMetaInfo);
+            });
+    }
+
+    private writeModStatus(mod: ModInfo, status: boolean): void {
+        const modInfo: ModFormat = {
+            'projectID': mod.modId,
+            'fileID': mod.id,
+            'required': this.manifestInfo.files.find((modMetaInfo: ModFormat): ModFormat | void => {
+                if (modMetaInfo.projectID === mod.modId) {
+                    return modMetaInfo;
+                }
+            })?.required ?? false
+        };
+        if (status) {
+            this.manifest.files.push(modInfo);
+            this.modStatus.succeed.push(modInfo);
+        } else if (!status && modInfo.projectID && modInfo.fileID) {
+            this.modStatus.fail.push(modInfo);
+        }
+    }
 }
+
+export default ModUpdater;
+export type {
+    Callback,
+    Config,
+    Event,
+    ManifestFormat,
+    ForgeResponseData,
+    ModUpdateStatus,
+    ModLoader,
+    ModFormat,
+    ModInfo
+};
