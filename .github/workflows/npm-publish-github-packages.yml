@@ -26,7 +26,7 @@ jobs:
       - uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: pages
+          BRANCH: main
           FOLDER: build
       - run: npm publish
         env:
