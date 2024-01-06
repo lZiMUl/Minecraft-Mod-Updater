@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/npm-publish-github-packages.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/npm-publish-github-packages.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +137,7 @@
       <recent name="D:\Projects\WebStorm\Minecraft Mods Updater" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.test">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -202,8 +197,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start-gui" />
         <item itemvalue="npm.start-cli" />
         <item itemvalue="npm.start" />
@@ -267,7 +262,7 @@
       <workItem from="1704190299673" duration="558000" />
       <workItem from="1704190875867" duration="473000" />
       <workItem from="1704191360970" duration="589000" />
-      <workItem from="1704539576132" duration="509000" />
+      <workItem from="1704539576132" duration="1063000" />
     </task>
     <task id="LOCAL-00001" summary="My new Project">
       <option name="closed" value="true" />
@@ -533,7 +528,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704187131152</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed Project">
+      <option name="closed" value="true" />
+      <created>1704540615400</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1704540615400</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
