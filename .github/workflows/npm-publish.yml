@@ -9,25 +9,20 @@ on:
       - main
 
 jobs:
-  publish-gpr:
+  publish-npm:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16]
+        node-version: [ 16 ]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org
-      - run: npm install
-      - run: npm run build
+      - run: npm i
+      - run: npm run build --if-present
       - run: npm run test
-      - uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: publish
-          FOLDER: build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
