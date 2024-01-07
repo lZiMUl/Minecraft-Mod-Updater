@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project" />
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/release.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/npm-publish.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bin/cli.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bin/cli.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bin/gui.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bin/gui.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bin/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/gui.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,22 +137,16 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="QodanaReportsService">
-    <option name="descriptions">
-      <ReportDescription localRun="true" path="C:\Users\AA290\AppData\Local\Temp\qodana_output1\qodana.sarif.json" reportGuid="9e998769-de1a-4c38-a710-e6b116c2923a" reportId="Minecraft Mods Updater/qodana/2023-12-28" />
-      <ReportDescription localRun="true" path="C:\Users\AA290\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="f62d6611-053d-48eb-a9c8-fcf55d0740df" reportId="Minecraft Mods Updater/qodana/2023-12-28" />
-    </option>
-  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\build" />
-      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater" />
+      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\src\public\html" />
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\src" />
-      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\src\bin" />
-      <recent name="D:\Projects\WebStorm\Minecraft Mods Updater" />
+      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\public" />
+      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater" />
+      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\build" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.test">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -197,10 +206,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.start-gui" />
         <item itemvalue="npm.start-cli" />
+        <item itemvalue="npm.start-gui" />
+        <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -263,6 +272,8 @@
       <workItem from="1704190875867" duration="473000" />
       <workItem from="1704191360970" duration="589000" />
       <workItem from="1704539576132" duration="1760000" />
+      <workItem from="1704659805901" duration="600000" />
+      <workItem from="1704660420228" duration="6627000" />
     </task>
     <task id="LOCAL-00001" summary="My new Project">
       <option name="closed" value="true" />
@@ -648,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704543928587</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Fixed Project">
+      <option name="closed" value="true" />
+      <created>1704544010055</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1704544010055</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

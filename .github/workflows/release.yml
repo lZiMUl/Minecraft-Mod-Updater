@@ -1,0 +1,16 @@
+## This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+## For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Node.js
+    uses: minecraft-mod-updater/github-actions/.github/workflows/node-release.yml@master
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
