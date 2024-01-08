@@ -44,11 +44,12 @@
     "mcmug": "./build/bin/gui.js"
   },
   "files": [
-    "/build/",
-    "/lib/",
-    "/LICENSE",
-    "/README.md",
-    "/SECURITY.md"
+    "./assets/",
+    "./build/",
+    "./lib/",
+    "./LICENSE",
+    "./README.md",
+    "./SECURITY.md"
   ],
   "keywords": [
     "lZiMUl",
