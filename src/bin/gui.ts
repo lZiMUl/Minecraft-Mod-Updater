@@ -14,11 +14,10 @@ const program: Command = command.description(description).version(version);
 
 program.option('-i, --file <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
 program.option('-o, --outDir <path>', 'path to the output', resolve('.'));
-program.option('-k, --apiKey <text>', 'api key', env.MCMU_APIKEY ?? 'none');
+program.option('-k, --apiKey <text>', 'api key', env['MCMU_APIKEY'] ?? 'none');
 program.option('-f, --forceDownload', 'force download', false);
 
 program.parse(argv);
-
 
 class GUI extends BrowserWindow {
     public static status: boolean = false;
@@ -30,7 +29,7 @@ class GUI extends BrowserWindow {
         this.notification = new Notification({
             'icon': args.icon,
             'title': args.title,
-            'body': `${this.args} [${this.args}}]`
+            'body': args.body
         });
         if (GUI.status) {
             super.loadURL('https://lzimul.top/archives/b628cc84-7903-4ecd-8205-8626dba18f68').then((): void => {
@@ -39,7 +38,7 @@ class GUI extends BrowserWindow {
                 this.notification.addListener('close', this.handle.bind(this));
             });
         } else {
-            throw new Error(args.body);
+            throw new Error(JSON.stringify(this.args));
         }
     }
 
@@ -52,7 +51,7 @@ class GUI extends BrowserWindow {
 
 (async (): Promise<void> => {
     const message: string = 'Not yet developed, stay tuned';
-    const icon: string = join(resolve('.'), '/assets/lZiMUl.ico');
+    const icon: string = join(resolve(__dirname), '../../', './assets/lZiMUl.ico');
     try {
         await app.whenReady();
         app.setAppLogsPath(icon);
@@ -62,8 +61,8 @@ class GUI extends BrowserWindow {
         new GUI({
             'icon': icon,
             'title': name,
-            width,
-            height
+            'width': width / 2,
+            'height': height / 2
         }, {
             'icon': icon,
             'title': name,

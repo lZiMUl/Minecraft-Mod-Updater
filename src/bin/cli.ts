@@ -16,7 +16,7 @@ const program: Command = command.description(description).version(version);
 
 program.option('-i, --file <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
 program.option('-o, --outDir <path>', 'path to the output', resolve('.'));
-program.option('-k, --apiKey <text>', 'api key', env.MCMU_APIKEY ?? 'none');
+program.option('-k, --apiKey <text>', 'api key', env['MCMU_APIKEY'] ?? 'none');
 program.option('-f, --forceDownload', 'force download', false);
 
 program.parse(argv);
