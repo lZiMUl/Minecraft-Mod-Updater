@@ -7,6 +7,7 @@ import { Command } from 'commander';
 import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
 
 import { description, version } from '../../package.json';
+
 import ModUpdater, { ModInfo, ModUpdateStatus } from '../index';
 import { ErrorEnum, ErrorType, Parameter } from '../interfaces';
 

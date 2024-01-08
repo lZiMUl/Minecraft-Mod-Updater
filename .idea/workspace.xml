@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project" />
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Fixed Project">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/npm-publish.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/lZiMUl.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/lZiMUl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/interfaces/gui.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/gui.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/node.js.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/node.js.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bin/cli.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/cli.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bin/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/gui.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,11 +137,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\assets" />
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\src\public\html" />
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\src" />
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\public" />
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater" />
-      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\build" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -192,8 +205,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.start-cli" />
         <item itemvalue="npm.start-gui" />
+        <item itemvalue="npm.start-cli" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
       </list>
@@ -258,15 +271,7 @@
       <workItem from="1704191360970" duration="589000" />
       <workItem from="1704539576132" duration="1760000" />
       <workItem from="1704659805901" duration="600000" />
-      <workItem from="1704660420228" duration="6930000" />
-    </task>
-    <task id="LOCAL-00003" summary="My new Project">
-      <option name="closed" value="true" />
-      <created>1701881882321</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1701881882321</updated>
+      <workItem from="1704660420228" duration="11828000" />
     </task>
     <task id="LOCAL-00004" summary="My new Project">
       <option name="closed" value="true" />
@@ -652,7 +657,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704667398850</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Fixed Project">
+      <option name="closed" value="true" />
+      <created>1704667432193</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1704667432193</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,0 +1,1 @@
+{"version":3,"file":"gui.d.ts","sourceRoot":"","sources":["../../src/interfaces/gui.ts"],"names":[],"mappings":"AAAA,UAAU,IAAI;IACV,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,MAAM,CAAC;CAChB;AAED,UAAU,IAAI;IACV,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAG,MAAM,CAAC;CACnB;AAED,YAAY,EAAE,IAAI,EAAE,IAAI,EAAE,CAAC"}

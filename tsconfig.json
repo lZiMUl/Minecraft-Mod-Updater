@@ -6,7 +6,8 @@
     "diagnostics": true,
     "target": "esnext",
     "lib": [
-      "esnext"
+      "esnext",
+      "dom"
     ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
