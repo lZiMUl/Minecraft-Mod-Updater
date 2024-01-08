@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI">
+      <change afterPath="$PROJECT_DIR$/src/bin/npminstall-debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +120,7 @@
     &quot;npm.start-gui.executor&quot;: &quot;Run&quot;,
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
     &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\Projects\\WebStorm\\Minecraft Mod Updater\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -193,11 +194,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.start-gui" />
-        <item itemvalue="npm.start-cli" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.start-gui" />
+        <item itemvalue="npm.start-cli" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -265,14 +266,8 @@
       <workItem from="1704677046744" duration="2319000" />
       <workItem from="1704679828681" duration="1474000" />
       <workItem from="1704739694757" duration="479000" />
-    </task>
-    <task id="LOCAL-00017" summary="Update Project">
-      <option name="closed" value="true" />
-      <created>1703696069783</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1703696069783</updated>
+      <workItem from="1704740294632" duration="237000" />
+      <workItem from="1704740551028" duration="623000" />
     </task>
     <task id="LOCAL-00018" summary="Fixed Project">
       <option name="closed" value="true" />
@@ -658,7 +653,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704680874361</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1704740434429</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1704740434429</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
