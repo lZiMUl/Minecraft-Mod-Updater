@@ -195,11 +195,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.start-gui" />
         <item itemvalue="npm.start-cli" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
