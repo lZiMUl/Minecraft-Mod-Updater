@@ -1,13 +1,13 @@
-import { join } from 'node:path';
-import { EventEmitter } from 'node:events';
-import { createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync, type WriteStream } from 'node:fs';
-import { type AxiosInstance, type AxiosResponse, create, request } from 'axios';
-import { exit } from 'node:process';
+import {join} from 'node:path';
+import {EventEmitter} from 'node:events';
+import {createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync, type WriteStream} from 'node:fs';
+import {type AxiosInstance, type AxiosResponse, create, request} from 'axios';
+import {exit} from 'node:process';
 
 import {
-    ErrorEnum,
     type Callback,
     type Config,
+    ErrorEnum,
     type Event,
     type ForgeResponseData,
     type ManifestFormat,
@@ -60,43 +60,43 @@ class ModUpdater {
                 'x-api-key': config.apiKey
             }
         });
-        this.modList = [ ...new Set(this.manifestInfo.files.map(({
-            projectID,
-            fileID,
-            required
-        }: ModFormat): ModFormat => ({
+        this.modList = [...new Set(this.manifestInfo.files.map(({
+                                                                    projectID,
+                                                                    fileID,
+                                                                    required
+                                                                }: ModFormat): ModFormat => ({
             projectID, fileID, required
-        }))) ];
+        })))];
         this.update(config);
         this.event.emit('getNextModInfo', this.nextModMetaInfo);
-    }
-
-    public addListener<T>(event: Event, callback: Callback<T>): void {
-        this.event.addListener(event, callback);
     }
 
     private get nextModMetaInfo(): ModFormat | void {
         return this.modList.shift();
     }
 
+    public addListener<T>(event: Event, callback: Callback<T>): void {
+        this.event.addListener(event, callback);
+    }
+
     private update(config: Config): void {
         this.event.addListener('getNextModInfo', async ({
-            projectID,
-            fileID,
-            required
-        }: ModFormat): Promise<void> => {
+                                                            projectID,
+                                                            fileID,
+                                                            required
+                                                        }: ModFormat): Promise<void> => {
             if (required) {
                 if (this.modList.length && projectID && fileID) {
-                    const { data }: AxiosResponse<ForgeResponseData> = await this.instance.request({
+                    const {data}: AxiosResponse<ForgeResponseData> = await this.instance.request({
                         'url': `${projectID}/files`,
                     });
-                    const mod: ModInfo = Object.assign({ fileID }, data.data[0]);
+                    const mod: ModInfo = Object.assign({fileID}, data.data[0]);
                     if (mod.id !== fileID || config.forceDownload) {
                         if (mod.downloadUrl) {
                             this.event.emit('downloading', mod);
                             await this.downloadFile(mod, join(config.outDir, 'Minecraft Mod Update'));
                         } else {
-                            this.event.emit('errored', { 'type': ErrorEnum.ADDRESS, mod });
+                            this.event.emit('errored', {'type': ErrorEnum.ADDRESS, mod});
                             this.writeModStatus(mod, false);
                             this.event.emit('getNextModInfo', this.nextModMetaInfo);
                         }
@@ -117,13 +117,13 @@ class ModUpdater {
 
     private createFile(fileName: string, path: string): WriteStream {
         if (!existsSync(path)) {
-            mkdirSync(path, { 'recursive': true });
+            mkdirSync(path, {'recursive': true});
         }
         return createWriteStream(join(path, fileName));
     }
 
     private async downloadFile(mod: ModInfo, path: string): Promise<void> {
-        const { data }: AxiosResponse<WriteStream> = await request({
+        const {data}: AxiosResponse<WriteStream> = await request({
             'url': mod.downloadUrl,
             'responseType': 'stream'
         });
@@ -133,10 +133,10 @@ class ModUpdater {
                 this.event.emit('downloaded', mod);
                 this.event.emit('getNextModInfo', this.nextModMetaInfo);
             }).addListener('error', (): void => {
-                this.writeModStatus(mod, false);
-                this.event.emit('errored', { 'type': ErrorEnum.DOWNLOAD, mod });
-                this.event.emit('getNextModInfo', this.nextModMetaInfo);
-            });
+            this.writeModStatus(mod, false);
+            this.event.emit('errored', {'type': ErrorEnum.DOWNLOAD, mod});
+            this.event.emit('getNextModInfo', this.nextModMetaInfo);
+        });
     }
 
     private writeModStatus(mod: ModInfo, status: boolean): void {

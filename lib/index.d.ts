@@ -7,8 +7,8 @@ declare class ModUpdater {
     private readonly manifest;
     private readonly modStatus;
     constructor(filePath: string, config: Config);
-    addListener<T>(event: Event, callback: Callback<T>): void;
     private get nextModMetaInfo();
+    addListener<T>(event: Event, callback: Callback<T>): void;
     private update;
     private createFile;
     private downloadFile;

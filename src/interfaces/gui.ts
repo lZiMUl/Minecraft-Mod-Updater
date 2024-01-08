@@ -6,7 +6,7 @@ interface Args {
 
 interface Size {
     width: number;
-    height:  number;
+    height: number;
 }
 
-export type { Args, Size };
+export type {Args, Size};

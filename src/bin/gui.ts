@@ -1,10 +1,10 @@
 #!/usr/bin/env electron
-import { resolve, join } from 'node:path';
-import { app, BrowserWindow, screen ,BrowserWindowConstructorOptions, Notification } from 'electron';
+import {join, resolve} from 'node:path';
+import {app, BrowserWindow, BrowserWindowConstructorOptions, Notification, screen} from 'electron';
 
-import { name, description } from '../../package.json';
+import {description, name} from '../../package.json';
 
-import { Args, Size } from '../interfaces/gui';
+import {Args, Size} from '../interfaces/gui';
 
 class GUI extends BrowserWindow {
     public static status: boolean = false;
@@ -41,7 +41,7 @@ class GUI extends BrowserWindow {
         await app.whenReady();
         app.setAppLogsPath(icon);
         app.setAppUserModelId(name);
-        const { width, height }: Size = screen.getPrimaryDisplay().size;
+        const {width, height}: Size = screen.getPrimaryDisplay().size;
         GUI.status = true;
         new GUI({
             'icon': icon,
