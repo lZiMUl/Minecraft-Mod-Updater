@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI" />
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/npm-publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/npm-publish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -258,23 +261,7 @@
       <workItem from="1704191360970" duration="589000" />
       <workItem from="1704539576132" duration="1760000" />
       <workItem from="1704659805901" duration="600000" />
-      <workItem from="1704660420228" duration="13018000" />
-    </task>
-    <task id="LOCAL-00009" summary="Update Project">
-      <option name="closed" value="true" />
-      <created>1703481938462</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1703481938462</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Update Project">
-      <option name="closed" value="true" />
-      <created>1703482415518</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1703482415518</updated>
+      <workItem from="1704660420228" duration="14017000" />
     </task>
     <task id="LOCAL-00011" summary="Update Project">
       <option name="closed" value="true" />
@@ -652,7 +639,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704673490876</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1704673619139</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1704673619139</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1704673719403</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1704673719403</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
