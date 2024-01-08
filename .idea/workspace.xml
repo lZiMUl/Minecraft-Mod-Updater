@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bin/cli.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/cli.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bin/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/gui.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/gui.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,15 +263,8 @@
       <workItem from="1704660420228" duration="15474000" />
       <workItem from="1704676178966" duration="607000" />
       <workItem from="1704677046744" duration="2319000" />
-      <workItem from="1704679828681" duration="830000" />
-    </task>
-    <task id="LOCAL-00016" summary="Update Project">
-      <option name="closed" value="true" />
-      <created>1703696032102</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1703696032102</updated>
+      <workItem from="1704679828681" duration="1474000" />
+      <workItem from="1704739694757" duration="479000" />
     </task>
     <task id="LOCAL-00017" summary="Update Project">
       <option name="closed" value="true" />
@@ -666,7 +650,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704679140357</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1704680874361</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1704680874361</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
