@@ -9,4 +9,4 @@ interface Size {
     height: number;
 }
 
-export type {Args, Size};
+export type { Args, Size };

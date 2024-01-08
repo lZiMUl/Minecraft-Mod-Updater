@@ -62,7 +62,7 @@ interface ErrorType<T> {
 type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'downloadErrored' | 'errored';
 type Callback<T> = (data: T) => void;
 
-export {ErrorEnum};
+export { ErrorEnum };
 export type {
     Config,
     Parameter,
