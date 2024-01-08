@@ -1,4 +1,4 @@
-#!/usr/bin/env electron
+#!/usr/bin/env ../../node_modules/electron/dist/electron.exe
 import { argv, env } from 'node:process';
 import { Command } from 'commander';
 import { join, resolve } from 'node:path';
