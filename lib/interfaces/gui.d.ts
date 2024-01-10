@@ -1,5 +1,4 @@
 interface Args {
-    icon: string;
     title: string;
     body: string;
 }

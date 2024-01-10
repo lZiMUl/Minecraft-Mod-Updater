@@ -27,7 +27,6 @@ class GUI extends BrowserWindow {
     public constructor(config: BrowserWindowConstructorOptions, args: Args) {
         super(config);
         this.notification = new Notification({
-            'icon': args.icon,
             'title': args.title,
             'body': args.body
         });
@@ -43,28 +42,22 @@ class GUI extends BrowserWindow {
     }
 
     private handle(): void {
-        setInterval((): void => {
-            this.notification.show();
-        }, 500);
+        this.notification.show();
     }
 }
 
 (async (): Promise<void> => {
     const message: string = 'Not yet developed, stay tuned';
-    const icon: string = join(resolve(__dirname), '../../', './assets/lZiMUl.ico');
     try {
         await app.whenReady();
-        app.setAppLogsPath(icon);
         app.setAppUserModelId(name);
         const { width, height }: Size = screen.getPrimaryDisplay().size;
         GUI.status = true;
         new GUI({
-            'icon': icon,
             'title': name,
             'width': width / 2,
             'height': height / 2
         }, {
-            'icon': icon,
             'title': name,
             'body': description
         });
