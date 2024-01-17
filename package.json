@@ -45,7 +45,6 @@
     "mcmug": "./build/bin/gui.js"
   },
   "files": [
-    "./assets/",
     "./build/",
     "./lib/",
     "./LICENSE",

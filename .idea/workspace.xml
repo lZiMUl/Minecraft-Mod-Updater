@@ -6,36 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/.nojekyll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/highlight.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/navigation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/classes/ModUpdater.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/hierarchy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/Config.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ForgeResponseData.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ManifestFormat.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModFormat.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModLoader.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModUpdateStatus.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/types/Callback.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/types/Event.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bin/cli.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bin/cli.d.ts.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bin/gui.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bin/gui.d.ts.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/index.d.ts.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/gui.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/classes/ModUpdater.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/classes/ModUpdater.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.d.ts.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bin/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/gui.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/gui.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +140,7 @@
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.typedoc">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -224,8 +200,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.typedoc" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.typedoc" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
@@ -303,31 +279,7 @@
       <workItem from="1704879042594" duration="50000" />
       <workItem from="1705229999824" duration="1983000" />
       <workItem from="1705247211738" duration="36000" />
-      <workItem from="1705472088521" duration="5775000" />
-    </task>
-    <task id="LOCAL-00035" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704540691827</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1704540691827</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704540739841</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1704540739841</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704540874184</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1704540874184</updated>
+      <workItem from="1705472088521" duration="6836000" />
     </task>
     <task id="LOCAL-00038" summary="Fixed Project">
       <option name="closed" value="true" />
@@ -697,7 +649,31 @@
       <option name="project" value="LOCAL" />
       <updated>1705476782188</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1705478106052</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1705478106052</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1705478200259</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1705478200259</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1705478353757</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1705478353757</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

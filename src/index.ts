@@ -17,6 +17,24 @@ import {
     type ModUpdateStatus
 } from './interfaces';
 
+/**
+ * @name ModUpdater
+ * @description Call this class to start customizing your secondary development project
+ * @version 1.2.17
+ * @author lZiMUl <lZiMUl@lzimul.top>
+ * @licence GPL-3.0
+ * @param { string } filePath The path to the list of mods
+ * @param { Config } config Configuration items
+ * @param { Config.outDir } config.outDir The output path of the module
+ * @param { Config.apiKey } config.apiKey CurseForge Developer Platform Personal Key
+ * @param { Config.forceDownload } config.forceDownload Whether to enable forced downloads
+ * @example
+ * const modUpdater: ModUpdater = new ModUpdater('./manifest.json', {
+ *   outDir: './',
+ *   apiKey: 'xxxxxxxxxxxxxxxxxxxxx',
+ *   forceDownload: true
+ * })
+ */
 class ModUpdater {
     private readonly event: EventEmitter = new EventEmitter();
     private readonly manifestInfo: ManifestFormat;
@@ -28,24 +46,6 @@ class ModUpdater {
         'fail': []
     };
 
-    /**
-     * @name ModUpdater
-     * @description Call this class to start customizing your secondary development project
-     * @version 1.2.17
-     * @author lZiMUl <lZiMUl@lzimul.top>
-     * @licence GPL-3.0
-     * @param { string } filePath The path to the list of mods
-     * @param { Config } config Configuration items
-     * @param { Config.outDir } config.outDir The output path of the module
-     * @param { Config.apiKey } config.apiKey CurseForge Developer Platform Personal Key
-     * @param { Config.forceDownload } config.forceDownload Whether to enable forced downloads
-     * @example
-     * const modUpdater: ModUpdater = new ModUpdater('./manifest.json', {
-     *   outDir: './',
-     *   apiKey: 'xxxxxxxxxxxxxxxxxxxxx',
-     *   forceDownload: true
-     * })
-     */
     public constructor(filePath: string, config: Config) {
         this.manifestInfo = JSON.parse(readFileSync(filePath, {
             'encoding': 'utf-8',

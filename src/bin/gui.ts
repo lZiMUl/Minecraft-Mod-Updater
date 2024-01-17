@@ -5,9 +5,9 @@ import { join, resolve } from 'node:path';
 import { app, BrowserWindow, BrowserWindowConstructorOptions, Notification, screen } from 'electron';
 
 import { description, name, version } from '../../package.json';
-
-import { Args, Size } from '../interfaces/gui';
+import { Args } from '../interfaces/gui';
 import { Parameter } from '../interfaces';
+import Size = Electron.Size;
 
 const command: Command = new Command('mcmu');
 const program: Command = command.description(description).version(version);
