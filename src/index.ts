@@ -46,7 +46,7 @@ class ModUpdater {
      *   forceDownload: true
      * })
      */
-    public constructor(filePath: string, config: Config) {
+    public constructor(filePath: string, config: Config): ModUpdater {
         this.manifestInfo = JSON.parse(readFileSync(filePath, {
             'encoding': 'utf-8',
             'flag': 'r'
