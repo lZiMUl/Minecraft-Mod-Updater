@@ -27,6 +27,7 @@ class ModUpdater {
         'succeed': [],
         'fail': []
     };
+
     /**
      * @name ModUpdater
      * @description Call this class to start customizing your secondary development project
@@ -88,16 +89,12 @@ class ModUpdater {
         this.event.emit('getNextModInfo', this.nextModMetaInfo);
     }
 
-    private get nextModMetaInfo(): ModFormat | void {
-        return this.modList.shift();
-    }
     /**
      * @name addListener
      * @description Add an event listener to process subsequent results
      * @version 1.2.17
      * @author lZiMUl <lZiMUl@lzimul.top>
      * @licence GPL-3.0
-     * @public 1 1
      * @param { Event } event EventName
      * @param { Callback<ModInfo | ModUpdateStatus | ErrorCallback<ModInfo>> } callback CallBack Function
      * @return { void } void
@@ -106,8 +103,12 @@ class ModUpdater {
      *     console.info(message);
      * });
      */
-    public addListener<T>(event: Event, callback: Callback<T>): void {
+    public addListener<T = ModInfo | ModUpdateStatus | ErrorCallback>(event: Event, callback: Callback<T>): void {
         this.event.addListener(event, callback);
+    }
+
+    private get nextModMetaInfo(): ModFormat | void {
+        return this.modList.shift();
     }
 
     private update(config: Config): void {

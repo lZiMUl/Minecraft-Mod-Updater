@@ -45,5 +45,7 @@
     "skipLibCheck": true,
     "listEmittedFiles": true,
     "listFiles": true
-  }
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["./node_modules/*"]
 }

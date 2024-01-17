@@ -7,13 +7,14 @@ declare class ModUpdater {
     private readonly manifest;
     private readonly modStatus;
     constructor(filePath: string, config: Config);
+    addListener<T = ModInfo | ModUpdateStatus | ErrorCallback>(event: Event, callback: Callback<T>): void;
     private get nextModMetaInfo();
-    addListener<T>(event: Event, callback: Callback<T>): void;
     private update;
     private createFile;
     private downloadFile;
     private writeModStatus;
 }
 export default ModUpdater;
+export { ModUpdater };
 export type { Callback, Config, Event, ManifestFormat, ForgeResponseData, ModUpdateStatus, ModLoader, ModFormat, ModInfo };
 //# sourceMappingURL=index.d.ts.map
