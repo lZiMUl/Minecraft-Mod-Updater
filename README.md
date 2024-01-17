@@ -53,7 +53,7 @@ npm install --save minecraft-mod-updater
 import ModUpdater, { type ModInfo, type ModUpdateStatus, ErrorEnum, type ErrorType, type Parameter } from 'minecraft-mod-updater';
 import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
 
-const modUpdater: ModUpdater = new ModUpdater('filePath', {
+const modUpdater: ModUpdater = new ModUpdater('./filePath/manifest.json', {
     outDir: './out',
     apiKey: 'xxxxxxxxxxxxxxxxxxxxxxxx',
     forceDownload: false
