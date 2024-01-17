@@ -38,7 +38,6 @@ class ModUpdater {
      * @param { Config.outDir } config.outDir The output path of the module
      * @param { Config.apiKey } config.apiKey CurseForge Developer Platform Personal Key
      * @param { Config.forceDownload } config.forceDownload Whether to enable forced downloads
-     * @return { ModUpdater } ModUpdater Class
      * @example
      * const modUpdater: ModUpdater = new ModUpdater('./manifest.json', {
      *   outDir: './',
@@ -46,7 +45,7 @@ class ModUpdater {
      *   forceDownload: true
      * })
      */
-    public constructor(filePath: string, config: Config): ModUpdater {
+    public constructor(filePath: string, config: Config) {
         this.manifestInfo = JSON.parse(readFileSync(filePath, {
             'encoding': 'utf-8',
             'flag': 'r'
