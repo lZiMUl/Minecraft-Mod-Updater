@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/classes/ModUpdater.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/classes/ModUpdater.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bin/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/gui.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/gui.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +134,7 @@
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.typedoc">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -200,8 +194,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.typedoc" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
@@ -279,15 +273,7 @@
       <workItem from="1704879042594" duration="50000" />
       <workItem from="1705229999824" duration="1983000" />
       <workItem from="1705247211738" duration="36000" />
-      <workItem from="1705472088521" duration="6836000" />
-    </task>
-    <task id="LOCAL-00038" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704540992199</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1704540992199</updated>
+      <workItem from="1705472088521" duration="7152000" />
     </task>
     <task id="LOCAL-00039" summary="Fixed Project">
       <option name="closed" value="true" />
@@ -673,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705478353757</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1705479274223</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1705479274223</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
