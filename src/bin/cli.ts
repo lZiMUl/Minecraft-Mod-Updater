@@ -8,8 +8,14 @@ import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 
 
 import { description, version } from '../../package.json';
 
-import ModUpdater, { ModInfo, ModUpdateStatus } from '../index';
-import { ErrorEnum, ErrorType, Parameter } from '../interfaces';
+import ModUpdater, {
+    ErrorEnum,
+    type ErrorType,
+    EventEnum,
+    type ModInfo,
+    type ModUpdateStatus,
+    type Parameter
+} from '../index';
 
 const command: Command = new Command('mcmu');
 const program: Command = command.description(description).version(version);
@@ -30,11 +36,11 @@ if (apiKey !== 'none') {
             apiKey,
             forceDownload
         });
-        modUpdater.addListener<ModInfo>('downloading', (mod: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mod.fileName)} {(${yellowBright(mod.modId)}) [${redBright(mod.fileID)} => ${greenBright(mod.id)}]} -> ${blueBright(mod.downloadUrl)}`));
-        modUpdater.addListener<ModInfo>('downloaded', (mod: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mod.fileName)}\n`));
-        modUpdater.addListener<ModInfo>('skipped', (mod: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mod.fileName)} (${yellowBright(mod.modId)} [${greenBright(mod.fileID)} == ${greenBright(mod.id)}]) \n`));
-        modUpdater.addListener<ModUpdateStatus>('finished', (mod: ModUpdateStatus): void => info(mod, '\n', greenBright('The update is complete')));
-        modUpdater.addListener<ErrorType<ModInfo>>('errored', ({ type, mod }: ErrorType<ModInfo>): void => {
+        modUpdater.addEventListener<ModInfo>(EventEnum.DOWNLOADING, (mod: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mod.fileName)} {(${yellowBright(mod.modId)}) [${redBright(mod.fileID)} => ${greenBright(mod.id)}]} -> ${blueBright(mod.downloadUrl)}`));
+        modUpdater.addEventListener<ModInfo>(EventEnum.DOWNLOADED, (mod: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mod.fileName)}\n`));
+        modUpdater.addEventListener<ModInfo>(EventEnum.SKIPPED, (mod: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mod.fileName)} (${yellowBright(mod.modId)} [${greenBright(mod.fileID)} == ${greenBright(mod.id)}]) \n`));
+        modUpdater.addEventListener<ModUpdateStatus>(EventEnum.FINISHED, (mod: ModUpdateStatus): void => info(mod, '\n', greenBright('The update is complete')));
+        modUpdater.addEventListener<ErrorType<ModInfo>>(EventEnum.ERRORED, ({ type, mod }: ErrorType<ModInfo>): void => {
             switch (type) {
             case ErrorEnum.ADDRESS:
                 error(`${redBright('=====Error: Unable to get file address, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);

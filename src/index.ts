@@ -8,17 +8,21 @@ import {
     type Callback,
     type Config,
     ErrorEnum,
-    type Event,
+    type ErrorType,
+    EventEnum,
     type ForgeResponseData,
     type ManifestFormat,
     type ModFormat,
     type ModInfo,
     type ModLoader,
-    type ModUpdateStatus
+    type ModUpdateStatus,
+    type Parameter
 } from './interfaces';
+import { Args, Size } from './interfaces/gui';
 
 /**
  * @name ModUpdater
+ * @extends EventEmitter
  * @description Call this class to start customizing your secondary development project
  * @version 1.2.17
  * @author lZiMUl <lZiMUl@lzimul.top>
@@ -35,8 +39,7 @@ import {
  *   forceDownload: true
  * })
  */
-class ModUpdater {
-    private readonly event: EventEmitter = new EventEmitter();
+class ModUpdater extends EventEmitter {
     private readonly manifestInfo: ManifestFormat;
     private readonly modList: ModFormat[];
     private readonly instance: AxiosInstance;
@@ -47,6 +50,7 @@ class ModUpdater {
     };
 
     public constructor(filePath: string, config: Config) {
+        super({});
         this.manifestInfo = JSON.parse(readFileSync(filePath, {
             'encoding': 'utf-8',
             'flag': 'r'
@@ -86,7 +90,7 @@ class ModUpdater {
             projectID, fileID, required
         }))) ];
         this.update(config);
-        this.event.emit('getNextModInfo', this.nextModMetaInfo);
+        super.emit('getNextModInfo', this.nextModMetaInfo);
     }
 
     private get nextModMetaInfo(): ModFormat | void {
@@ -94,25 +98,25 @@ class ModUpdater {
     }
 
     /**
-     * @name addListener
+     * @name addEventListener
      * @description Add an event listener to process subsequent results
      * @version 1.2.17
      * @author lZiMUl <lZiMUl@lzimul.top>
      * @licence GPL-3.0
      * @param { Event } event EventName
-     * @param { Callback<ModInfo | ModUpdateStatus | ErrorCallback<ModInfo>> } callback CallBack Function
+     * @param { Callback<ModInfo | ModUpdateStatus | ErrorCallback<ModInfo | ModUpdateStatus>> } callback CallBack Function
      * @return { void } void
      * @example
      * modUpdater.addListener<ModInfo>('downloading', (message: string) => {
      *     console.info(message);
      * });
      */
-    public addListener<T = ModInfo | ModUpdateStatus | ErrorCallback>(event: Event, callback: Callback<T>): void {
-        this.event.addListener(event, callback);
+    public addEventListener<T = ModInfo | ModUpdateStatus | ErrorType<ModInfo | ModUpdateStatus>>(event: EventEnum, callback: Callback<T>): void {
+        super.addListener(event, callback);
     }
 
     private update(config: Config): void {
-        this.event.addListener('getNextModInfo', async ({
+        super.addListener('getNextModInfo', async ({
             projectID,
             fileID,
             required
@@ -125,22 +129,22 @@ class ModUpdater {
                     const mod: ModInfo = Object.assign({ fileID }, data.data[0]);
                     if (mod.id !== fileID || config.forceDownload) {
                         if (mod.downloadUrl) {
-                            this.event.emit('downloading', mod);
+                            super.emit(EventEnum.DOWNLOADING, mod);
                             await this.downloadFile(mod, join(config.outDir, 'Minecraft Mod Update'));
                         } else {
-                            this.event.emit('errored', { 'type': ErrorEnum.ADDRESS, mod });
+                            super.emit(EventEnum.ERRORED, { 'type': ErrorEnum.ADDRESS, mod });
                             this.writeModStatus(mod, false);
-                            this.event.emit('getNextModInfo', this.nextModMetaInfo);
+                            super.emit('getNextModInfo', this.nextModMetaInfo);
                         }
                     } else {
-                        this.event.emit('skipped', mod);
+                        super.emit(EventEnum.SKIPPED, mod);
                         this.writeModStatus(mod, true);
-                        this.event.emit('getNextModInfo', this.nextModMetaInfo);
+                        super.emit('getNextModInfo', this.nextModMetaInfo);
                     }
                 } else {
                     writeFileSync(join(config.outDir, 'new.manifest.json'), JSON.stringify(this.manifest, null, 2));
                     writeFileSync(join(config.outDir, 'Minecraft Mod Update Status.json'), JSON.stringify(this.modStatus, null, 2));
-                    this.event.emit('finished', this.modStatus);
+                    super.emit(EventEnum.FINISHED, this.modStatus);
                     exit(0);
                 }
             }
@@ -162,12 +166,12 @@ class ModUpdater {
         data.pipe<WriteStream>(this.createFile(mod.fileName, path))
             .addListener('finish', (): void => {
                 this.writeModStatus(mod, true);
-                this.event.emit('downloaded', mod);
-                this.event.emit('getNextModInfo', this.nextModMetaInfo);
+                super.emit(EventEnum.DOWNLOADED, mod);
+                super.emit('getNextModInfo', this.nextModMetaInfo);
             }).addListener('error', (): void => {
                 this.writeModStatus(mod, false);
-                this.event.emit('errored', { 'type': ErrorEnum.DOWNLOAD, mod });
-                this.event.emit('getNextModInfo', this.nextModMetaInfo);
+                super.emit(EventEnum.ERRORED, { 'type': ErrorEnum.DOWNLOAD, mod });
+                super.emit('getNextModInfo', this.nextModMetaInfo);
             });
     }
 
@@ -191,15 +195,18 @@ class ModUpdater {
 }
 
 export default ModUpdater;
-export { ModUpdater };
+export { ModUpdater, ErrorEnum, EventEnum };
 export type {
     Callback,
     Config,
-    Event,
     ManifestFormat,
     ForgeResponseData,
     ModUpdateStatus,
     ModLoader,
     ModFormat,
-    ModInfo
+    ModInfo,
+    ErrorType,
+    Parameter,
+    Args,
+    Size
 };

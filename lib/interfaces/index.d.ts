@@ -49,8 +49,14 @@ interface ErrorType<T> {
     type: ErrorEnum;
     mod: T;
 }
-type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'downloadErrored' | 'errored';
+declare enum EventEnum {
+    DOWNLOADING = "downloading",
+    DOWNLOADED = "downloaded",
+    SKIPPED = "skipped",
+    FINISHED = "finished",
+    ERRORED = "errored"
+}
 type Callback<T> = (data: T) => void;
-export { ErrorEnum };
-export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, ForgeResponseData, ModUpdateStatus, Event, Callback, ErrorType };
+export { ErrorEnum, EventEnum };
+export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, ForgeResponseData, ModUpdateStatus, Callback, ErrorType };
 //# sourceMappingURL=index.d.ts.map

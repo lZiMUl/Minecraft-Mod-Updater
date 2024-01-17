@@ -59,10 +59,16 @@ interface ErrorType<T> {
     mod: T
 }
 
-type Event = 'downloading' | 'downloaded' | 'skipped' | 'finished' | 'downloadErrored' | 'errored';
+enum EventEnum {
+    DOWNLOADING = 'downloading',
+    DOWNLOADED = 'downloaded',
+    SKIPPED = 'skipped',
+    FINISHED = 'finished',
+    ERRORED = 'errored'
+}
 type Callback<T> = (data: T) => void;
 
-export { ErrorEnum };
+export { ErrorEnum, EventEnum };
 export type {
     Config,
     Parameter,
@@ -72,7 +78,6 @@ export type {
     ManifestFormat,
     ForgeResponseData,
     ModUpdateStatus,
-    Event,
     Callback,
     ErrorType
 };

@@ -5,7 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI">
+      <change afterPath="$PROJECT_DIR$/docs/enums/ErrorEnum.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/enums/EventEnum.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/interfaces/Args.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/interfaces/ErrorType.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/interfaces/Parameter.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/interfaces/Size.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/highlight.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/highlight.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/classes/ModUpdater.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/classes/ModUpdater.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/hierarchy.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/hierarchy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interfaces/Config.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/Config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interfaces/ForgeResponseData.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ForgeResponseData.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interfaces/ManifestFormat.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ManifestFormat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModFormat.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModFormat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModLoader.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModLoader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModUpdateStatus.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModUpdateStatus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/types/Callback.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/types/Callback.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/types/Event.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.d.ts.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/gui.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/gui.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bin/cli.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/cli.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bin/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/gui.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/gui.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,11 +153,29 @@
     "npm.start.executor": "Run",
     "npm.test.executor": "Run",
     "npm.typedoc.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "application.passwordSafe",
     "ts.external.directory.path": "D:\\Projects\\WebStorm\\Minecraft Mod Updater\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="C:\Users\AA290\AppData\Local\Temp\qodana_output\qodana.sarif.json" />
+        <option name="reportGuid" value="998164c9-61aa-4b2d-a0a6-ccaf90fbf404" />
+        <option name="reportName" value="Minecraft Mod Updater/qodana/2024-01-17" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\AA290\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="998164c9-61aa-4b2d-a0a6-ccaf90fbf404" reportId="Minecraft Mod Updater/qodana/2024-01-17" />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\assets" />
@@ -196,9 +247,9 @@
       <list>
         <item itemvalue="npm.typedoc" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.lint" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
   </component>
@@ -273,15 +324,7 @@
       <workItem from="1704879042594" duration="50000" />
       <workItem from="1705229999824" duration="1983000" />
       <workItem from="1705247211738" duration="36000" />
-      <workItem from="1705472088521" duration="7152000" />
-    </task>
-    <task id="LOCAL-00039" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704541074841</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1704541074841</updated>
+      <workItem from="1705472088521" duration="10818000" />
     </task>
     <task id="LOCAL-00040" summary="Fixed Project">
       <option name="closed" value="true" />
@@ -667,7 +710,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705479274223</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Update Project And Add GUI">
+      <option name="closed" value="true" />
+      <created>1705479321942</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1705479321942</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
