@@ -89,6 +89,10 @@ class ModUpdater {
         this.event.emit('getNextModInfo', this.nextModMetaInfo);
     }
 
+    private get nextModMetaInfo(): ModFormat | void {
+        return this.modList.shift();
+    }
+
     /**
      * @name addListener
      * @description Add an event listener to process subsequent results
@@ -105,10 +109,6 @@ class ModUpdater {
      */
     public addListener<T = ModInfo | ModUpdateStatus | ErrorCallback>(event: Event, callback: Callback<T>): void {
         this.event.addListener(event, callback);
-    }
-
-    private get nextModMetaInfo(): ModFormat | void {
-        return this.modList.shift();
     }
 
     private update(config: Config): void {
