@@ -25,16 +25,16 @@ const { file, outDir, apiKey, forceDownload }: Parameter = program.opts<Paramete
 
 if (apiKey !== 'none') {
     if (existsSync(file)) {
-        const modUpdate: ModUpdater = new ModUpdater(file, {
+        const modUpdater: ModUpdater = new ModUpdater(file, {
             outDir,
             apiKey,
             forceDownload
         });
-        modUpdate.addListener<ModInfo>('downloading', (mod: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mod.fileName)} {(${yellowBright(mod.modId)}) [${redBright(mod.fileID)} => ${greenBright(mod.id)}]} -> ${blueBright(mod.downloadUrl)}`));
-        modUpdate.addListener<ModInfo>('downloaded', (mod: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mod.fileName)}\n`));
-        modUpdate.addListener<ModInfo>('skipped', (mod: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mod.fileName)} (${yellowBright(mod.modId)} [${greenBright(mod.fileID)} == ${greenBright(mod.id)}]) \n`));
-        modUpdate.addListener<ModUpdateStatus>('finished', (mod: ModUpdateStatus): void => info(mod, '\n', greenBright('The update is complete')));
-        modUpdate.addListener<ErrorType<ModInfo>>('errored', ({ type, mod }: ErrorType<ModInfo>): void => {
+        modUpdater.addListener<ModInfo>('downloading', (mod: ModInfo): void => info(`${magentaBright('Downloading:')} ${blueBright(mod.fileName)} {(${yellowBright(mod.modId)}) [${redBright(mod.fileID)} => ${greenBright(mod.id)}]} -> ${blueBright(mod.downloadUrl)}`));
+        modUpdater.addListener<ModInfo>('downloaded', (mod: ModInfo): void => info(`${greenBright('The download is complete')}: ${blueBright(mod.fileName)}\n`));
+        modUpdater.addListener<ModInfo>('skipped', (mod: ModInfo): void => warn(`${greenBright('Already the latest version, the update has been skipped')}: ${blueBright(mod.fileName)} (${yellowBright(mod.modId)} [${greenBright(mod.fileID)} == ${greenBright(mod.id)}]) \n`));
+        modUpdater.addListener<ModUpdateStatus>('finished', (mod: ModUpdateStatus): void => info(mod, '\n', greenBright('The update is complete')));
+        modUpdater.addListener<ErrorType<ModInfo>>('errored', ({ type, mod }: ErrorType<ModInfo>): void => {
             switch (type) {
             case ErrorEnum.ADDRESS:
                 error(`${redBright('=====Error: Unable to get file address, please download it manually=====')}\nMod ID: ${yellowBright(mod.modId)}\nThe name of the mod file: ${magentaBright(mod.fileName)}\n`);

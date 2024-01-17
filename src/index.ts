@@ -27,7 +27,25 @@ class ModUpdater {
         'succeed': [],
         'fail': []
     };
-
+    /**
+     * @name ModUpdater
+     * @description Call this class to start customizing your secondary development project
+     * @version 1.2.17
+     * @author lZiMUl <lZiMUl@lzimul.top>
+     * @licence GPL-3.0
+     * @param { string } filePath The path to the list of mods
+     * @param { Config } config Configuration items
+     * @param { Config.outDir } config.outDir The output path of the module
+     * @param { Config.apiKey } config.apiKey CurseForge Developer Platform Personal Key
+     * @param { Config.forceDownload } config.forceDownload Whether to enable forced downloads
+     * @return { ModUpdater } ModUpdater Class
+     * @example
+     * const modUpdater: ModUpdater = new ModUpdater('./manifest.json', {
+     *   outDir: './',
+     *   apiKey: 'xxxxxxxxxxxxxxxxxxxxx',
+     *   forceDownload: true
+     * })
+     */
     public constructor(filePath: string, config: Config) {
         this.manifestInfo = JSON.parse(readFileSync(filePath, {
             'encoding': 'utf-8',
@@ -74,7 +92,21 @@ class ModUpdater {
     private get nextModMetaInfo(): ModFormat | void {
         return this.modList.shift();
     }
-
+    /**
+     * @name addListener
+     * @description Add an event listener to process subsequent results
+     * @version 1.2.17
+     * @author lZiMUl <lZiMUl@lzimul.top>
+     * @licence GPL-3.0
+     * @public 1 1
+     * @param { Event } event EventName
+     * @param { Callback<ModInfo | ModUpdateStatus | ErrorCallback<ModInfo>> } callback CallBack Function
+     * @return { void } void
+     * @example
+     * modUpdater.addListener<ModInfo>('downloading', (message: string) => {
+     *     console.info(message);
+     * });
+     */
     public addListener<T>(event: Event, callback: Callback<T>): void {
         this.event.addListener(event, callback);
     }
@@ -159,6 +191,7 @@ class ModUpdater {
 }
 
 export default ModUpdater;
+export { ModUpdater };
 export type {
     Callback,
     Config,
