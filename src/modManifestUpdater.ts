@@ -24,7 +24,7 @@ import { Args, Size } from './interfaces/gui';
  * @name ModManifestUpdater
  * @extends EventEmitter
  * @description Call this class to start customizing your secondary development project
- * @version 1.2.17
+ * @version 1.3.17
  * @author lZiMUl <lZiMUl@lzimul.top>
  * @licence GPL-3.0
  * @param { string } filePath The path to the list of mods
@@ -132,7 +132,7 @@ class ModManifestUpdater extends EventEmitter {
     /**
      * @name addEventListener
      * @description Add an event listener to process subsequent results
-     * @version 1.2.17
+     * @version 1.3.17
      * @author lZiMUl <lZiMUl@lzimul.top>
      * @licence GPL-3.0
      * @param { Event } event EventName

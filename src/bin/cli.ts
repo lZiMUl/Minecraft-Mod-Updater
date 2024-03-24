@@ -16,12 +16,12 @@ const command: Command = new Command('mcmu');
 const program: Command = command.description(packageFile.description);
 
 program.option('-t, --type <JarFile | Manifest>', 'read type is jarFile or manifest', 'JarFile');
-program.option('-i, --input <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
+program.option('-i, --input <path>', 'path to the input', join(resolve('.'), './manifest.json'));
 program.option('-o, --output <path>', 'path to the output', resolve('.'));
 program.option('-v, --version <string>', 'game version');
 program.option('-l, --loader <forge | fabric | neoforge>', 'mod loader platform');
 program.option('-k, --apiKey <text>', 'api key', env['MCMU_APIKEY'] ?? 'none');
-program.option('-f, --forceDownload<no>', 'force download', false);
+program.option('-f, --forceDownload', 'force download', false);
 
 program.parse(argv);
 
