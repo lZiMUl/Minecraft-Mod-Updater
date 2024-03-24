@@ -6,33 +6,31 @@ import { join, resolve } from 'node:path';
 import { Command } from 'commander';
 import { blueBright, greenBright, magentaBright, redBright, yellowBright } from 'chalk';
 
-import { description, version } from '../../package.json';
+import packageFile from '../../package.json';
 
-import ModUpdater, {
-    ErrorEnum,
-    type ErrorType,
-    EventEnum,
-    type ModInfo,
-    type ModUpdateStatus,
-    type Parameter
-} from '../index';
+import { ModJarFileUpdater, ModManifestUpdater } from '../index';
+import { Parameter, EventEnum, ErrorEnum, ErrorType, type ModInfo, type ModUpdateStatus } from '../index';
+import { EventNameEnum } from '../interfaces';
 
 const command: Command = new Command('mcmu');
-const program: Command = command.description(description).version(version);
+const program: Command = command.description(packageFile.description);
 
-program.option('-i, --file <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
-program.option('-o, --outDir <path>', 'path to the output', resolve('.'));
+program.option('-t, --type <JarFile | Manifest>', 'read type is jarFile or manifest', 'JarFile');
+program.option('-i, --input <path>', 'path to the manifest file', join(resolve('.'), './manifest.json'));
+program.option('-o, --output <path>', 'path to the output', resolve('.'));
+program.option('-v, --version <string>', 'game version');
+program.option('-l, --loader <forge | fabric | neoforge>', 'mod loader platform');
 program.option('-k, --apiKey <text>', 'api key', env['MCMU_APIKEY'] ?? 'none');
-program.option('-f, --forceDownload', 'force download', false);
+program.option('-f, --forceDownload<no>', 'force download', false);
 
 program.parse(argv);
 
-const { file, outDir, apiKey, forceDownload }: Parameter = program.opts<Parameter>();
+const { type, input, output, version, loader, apiKey, forceDownload }: Parameter = program.opts<Parameter>();
 
-if (apiKey !== 'none') {
-    if (existsSync(file)) {
-        const modUpdater: ModUpdater = new ModUpdater(file, {
-            outDir,
+function manifest(input: string, forceDownload: boolean): void {
+    if (existsSync(input)) {
+        const modUpdater: ModManifestUpdater = new ModManifestUpdater(input, {
+            output,
             apiKey,
             forceDownload
         });
@@ -53,6 +51,46 @@ if (apiKey !== 'none') {
     } else {
         error(redBright('The manifest.json file does not exist, please create it and try again alive to view the help with mcmu -h'));
     }
+}
+
+function jarFile(input: string): void {
+    const dirPath: string = input.includes('json') ? resolve('./mods'): input;
+    if (existsSync(dirPath)) {
+        if (!version) {
+            error(redBright('The version is not specified, please specify it and try again alive to view the help with mcmu -h'));
+            return;
+        }
+        if (!loader) {
+            error(redBright('The modLoader is not specified, please specify it and try again alive to view the help with mcmu -h'));
+            return;
+        }
+        ModJarFileUpdater.fakeModManifestFile.minecraft.version = version;
+        ModJarFileUpdater.fakeModManifestFile.minecraft.modLoaders.push({
+            'id':  loader,
+            'primary': true
+        });
+        const modJarFileUpdater: ModJarFileUpdater = new ModJarFileUpdater(dirPath);
+        modJarFileUpdater.addEventListener(EventNameEnum.INIT, (mod: ModInfo): void => info(`${magentaBright('Init:')} ${blueBright(mod.fileName)} (${yellowBright(mod.modId)})`));
+        modJarFileUpdater.addEventListener(EventNameEnum.FINISHED, (): void => {
+            manifest(join(resolve('.'), './temp.json'), true);
+        });
+    } else {
+        error(redBright('The mods dir does not exist, please create it and try again alive to view the help with mcmu -h'));
+    }
+}
+
+if (apiKey !== 'none') {
+    switch (type) {
+    case 'Manifest':
+        manifest(input, forceDownload);
+        break;
+    case 'JarFile':
+        jarFile(input);
+        break;
+    default:
+        error(redBright('The read type is incorrect, please try again alive to view the help with mcmu -h'));
+    }
+
 } else {
     warn(yellowBright('The MCMU_APIKEY system environment variable could not be found, please add the system environment variable and try again alive to view the help with mcmu -h'));
 }

@@ -4,41 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project And Add GUI">
-      <change afterPath="$PROJECT_DIR$/docs/enums/ErrorEnum.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/enums/EventEnum.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/interfaces/Args.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/interfaces/ErrorType.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/interfaces/Parameter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/interfaces/Size.html" afterDir="false" />
+    <list default="true" id="fb204533-2946-4965-83f2-a859acb2a0a0" name="Changes" comment="Update Project &amp; TypeDocs And Add Secondary development">
+      <change afterPath="$PROJECT_DIR$/lib/getDirMods.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/getDirMods.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jar.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jar.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/modJarFileUpdater.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/modJarFileUpdater.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/modManifestUpdater.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/modManifestUpdater.d.ts.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/getDirMods.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modJarFileUpdater.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modManifestUpdater.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/highlight.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/highlight.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/classes/ModUpdater.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/classes/ModUpdater.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/hierarchy.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/hierarchy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/Config.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/Config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ForgeResponseData.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ForgeResponseData.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ManifestFormat.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ManifestFormat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModFormat.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModFormat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModLoader.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModLoader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interfaces/ModUpdateStatus.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interfaces/ModUpdateStatus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/types/Callback.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/types/Callback.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/types/Event.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.d.ts.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/gui.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/gui.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/gui.d.ts.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/interfaces/index.d.ts.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bin/cli.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/cli.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bin/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bin/gui.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/gui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/gui.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/typedoc.json" beforeDir="false" afterPath="$PROJECT_DIR$/typedoc.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,10 +124,10 @@
     "eslint.code.style.apply.dismiss": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "21.4.0",
-    "javascript.nodejs.core.library.typings.version": "20.10.3",
+    "javascript.nodejs.core.library.configured.version": "21.7.1",
+    "javascript.nodejs.core.library.typings.version": "20.11.30",
     "js.last.introduce.type": "CONST",
-    "last_opened_file_path": "D:/Projects/WebStorm/Minecraft Mod Updater",
+    "last_opened_file_path": "D:/Projects/WebStorm/Minecraft Mod Updater/test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -154,29 +144,20 @@
     "npm.test.executor": "Run",
     "npm.typedoc.executor": "Run",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "application.passwordSafe",
+    "settings.editor.selected.configurable": "terminal",
     "ts.external.directory.path": "D:\\Projects\\WebStorm\\Minecraft Mod Updater\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="QodanaHighlightedReportService">
-    <option name="localRunNotPublishedPersistedInfo">
-      <LocalReportPersistedInfo>
-        <option name="path" value="C:\Users\AA290\AppData\Local\Temp\qodana_output\qodana.sarif.json" />
-        <option name="reportGuid" value="998164c9-61aa-4b2d-a0a6-ccaf90fbf404" />
-        <option name="reportName" value="Minecraft Mod Updater/qodana/2024-01-17" />
-      </LocalReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\AA290\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="998164c9-61aa-4b2d-a0a6-ccaf90fbf404" reportId="Minecraft Mod Updater/qodana/2024-01-17" />
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\test" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\assets" />
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater\src\public\html" />
@@ -185,7 +166,7 @@
       <recent name="D:\Projects\WebStorm\Minecraft Mod Updater" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.typedoc">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -237,16 +218,16 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.lint" />
-      <item itemvalue="npm.typedoc" />
       <item itemvalue="npm.build" />
+      <item itemvalue="npm.lint" />
       <item itemvalue="npm.start" />
       <item itemvalue="npm.test" />
+      <item itemvalue="npm.typedoc" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.typedoc" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.typedoc" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.lint" />
@@ -324,31 +305,14 @@
       <workItem from="1704879042594" duration="50000" />
       <workItem from="1705229999824" duration="1983000" />
       <workItem from="1705247211738" duration="36000" />
-      <workItem from="1705472088521" duration="10818000" />
-    </task>
-    <task id="LOCAL-00040" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704541783496</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1704541783496</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704541887757</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1704541887757</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Fixed Project">
-      <option name="closed" value="true" />
-      <created>1704542440795</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1704542440795</updated>
+      <workItem from="1705472088521" duration="11229000" />
+      <workItem from="1705592462632" duration="147000" />
+      <workItem from="1705689003350" duration="766000" />
+      <workItem from="1705745230628" duration="682000" />
+      <workItem from="1705746089447" duration="886000" />
+      <workItem from="1707135650070" duration="215000" />
+      <workItem from="1711260132045" duration="4856000" />
+      <workItem from="1711265050372" duration="13873000" />
     </task>
     <task id="LOCAL-00043" summary="Fixed Project">
       <option name="closed" value="true" />
@@ -718,7 +682,31 @@
       <option name="project" value="LOCAL" />
       <updated>1705479321942</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Update Project &amp; TypeDocs And Add Secondary development">
+      <option name="closed" value="true" />
+      <created>1705483067610</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1705483067610</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Update Project &amp; TypeDocs And Add Secondary development">
+      <option name="closed" value="true" />
+      <created>1705483192405</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1705483192405</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Update Project &amp; TypeDocs And Add Secondary development">
+      <option name="closed" value="true" />
+      <created>1705483305757</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1705483305757</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -733,6 +721,7 @@
     <MESSAGE value="Update Project" />
     <MESSAGE value="Fixed Project" />
     <MESSAGE value="Update Project And Add GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Project And Add GUI" />
+    <MESSAGE value="Update Project &amp; TypeDocs And Add Secondary development" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Project &amp; TypeDocs And Add Secondary development" />
   </component>
 </project>

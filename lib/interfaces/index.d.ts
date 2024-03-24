@@ -1,14 +1,25 @@
+declare enum TypeEnum {
+    JarFile = "JarFile",
+    Manifest = "Manifest"
+}
 declare enum ErrorEnum {
     ADDRESS = "ADDRESS",
     DOWNLOAD = "DOWNLOAD"
 }
+declare enum EventNameEnum {
+    INIT = "init",
+    FINISHED = "finished"
+}
 interface Config {
-    outDir: string;
+    output: string;
     apiKey: string;
     forceDownload: boolean;
 }
 interface Parameter extends Config {
-    file: string;
+    type: TypeEnum;
+    input: string;
+    version: string;
+    loader: string;
 }
 interface ModFormat {
     projectID: number;
@@ -22,7 +33,7 @@ interface ModInfo extends ModFormat {
     downloadUrl: string | undefined;
 }
 interface ModLoader {
-    id: number;
+    id: string;
     primary: boolean;
 }
 interface ModUpdateStatus {
@@ -57,6 +68,6 @@ declare enum EventEnum {
     ERRORED = "errored"
 }
 type Callback<T> = (data: T) => void;
-export { ErrorEnum, EventEnum };
+export { ErrorEnum, EventEnum, EventNameEnum };
 export type { Config, Parameter, ModFormat, ModInfo, ModLoader, ManifestFormat, ForgeResponseData, ModUpdateStatus, Callback, ErrorType };
 //# sourceMappingURL=index.d.ts.map
